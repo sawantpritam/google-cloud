@@ -58,7 +58,7 @@
 		<!-- nav-right -->
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<a href='#!'>
-			<span class='label blue darken-3 suite-start-time'>Sep 29, 2021 06:33:36 PM</span>
+			<span class='label blue darken-3 suite-start-time'>Sep 29, 2021 06:51:10 PM</span>
 			</a>
 		</ul>
 	</div>
@@ -158,12 +158,12 @@
                     <canvas id='grandchild-analysis' width='90' height='70'></canvas>
                 </div>
                 <div class='block text-small'>
-                    <span class='tooltipped' data-position='top' data-tooltip='59.375%'><span class='strong'>19</span> step(s) passed</span>
+                    <span class='tooltipped' data-position='top' data-tooltip='71.875%'><span class='strong'>23</span> step(s) passed</span>
                 </div>
                 <div class='block text-small'>
                     <span class='strong tooltipped' data-position='top' data-tooltip='3.125%'>1</span> scenario(s) failed, 
-                    <span class='strong tooltipped' data-position='top' data-tooltip='37.5%'>12</span> skipped, 
-                    <span class='strong tooltipped' data-position='top' data-tooltip='37.5%'>0</span> others
+                    <span class='strong tooltipped' data-position='top' data-tooltip='25%'>8</span> skipped, 
+                    <span class='strong tooltipped' data-position='top' data-tooltip='25%'>0</span> others
                 </div>
             </div>
         </div>
@@ -184,7 +184,7 @@
 				<li class='test displayed active has-leaf fail' status='fail' bdd='true' test-id='1'>
 					<div class='test-heading'>
 						<span class='test-name'>Demo1</span>
-						<span class='test-time'>Sep 29, 2021 06:33:39 PM</span>
+						<span class='test-time'>Sep 29, 2021 06:51:11 PM</span>
 						<span class='test-status right fail'>fail</span>
 					</div>
 					<div class='test-content hide'>
@@ -198,7 +198,7 @@
 	<div class='category-list'>
 		<span class='category label'>@TC-Demo-1</span>
 	</div>
-	<span class='duration right label'>0h 3m 14s+583ms</span>
+	<span class='duration right label'>0h 2m 27s+571ms</span>
 	<div class="bdd-test">
 		<div class="scenario-name"><span class='status fail' title='fail'><i class='material-icons'>cancel</i></span> Scenario: User is able to Login and confirm data is getting transferred from GCS to BigQuery</div>
 	</div>
@@ -275,113 +275,35 @@
 			<div class="step-name" title=""><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>AfterActions.tearDown(Scenario)</div>
 			<div class="node-step"></div>
 		</li>
-		<li test-id='22' class='node then fail' status='fail'>
-			<div class="step-name" title="GCSBasicDemo.runThePipelineInRuntime()"><span class='status fail' title='fail'><i class='material-icons'>cancel</i></span>Then Run the Pipeline in Runtime</div>
-			<textarea disabled class="code-block">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //*[@class="icon-svg icon-play"]' (tried for 60 second(s) with 500 milliseconds interval)
-	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
-	at io.cdap.e2e.utils.SeleniumHelper.waitElementIsVisible(SeleniumHelper.java:77)
-	at io.cdap.e2e.pages.actions.CdfPipelineRunAction.runClick(CdfPipelineRunAction.java:17)
-	at stepsDesign.GCSBasicDemo.runThePipelineInRuntime(GCSBasicDemo.java:123)
-	at ✽.Run the Pipeline in Runtime(file:src/test/resources/Test/DemoGcs.feature:14)
-Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@class="icon-svg icon-play"]"}
-  (Session info: headless chrome=92.0.4515.159)
-For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
-Build info: version: '4.0.0-rc-1', revision: 'bc5511cbda'
-System info: host: 'runner-deployment-build-data-integrations-e2e-69959c6456-6n2ph', ip: '10.116.12.6', os.name: 'Linux', os.arch: 'amd64', os.version: '5.4.120+', java.version: '1.8.0_292'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [63f86c0171f544a7a79b5ecc1bc0d088, findElement {using=xpath, value=//*[@class="icon-svg icon-play"]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 92.0.4515.159, chrome: {chromedriverVersion: 92.0.4515.107 (87a818b10553..., userDataDir: /tmp/.com.google.Chrome.WCscjs}, goog:chromeOptions: {debuggerAddress: localhost:34897}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), se:cdp: ws://localhost:34897/devtoo..., se:cdpVersion: 92.0.4515.159, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: 63f86c0171f544a7a79b5ecc1bc0d088
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:164)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:139)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:547)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:162)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:381)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:373)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:70)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:39)
-	at com.sun.proxy.$Proxy21.isDisplayed(Unknown Source)
-	at org.openqa.selenium.support.ui.ExpectedConditions.elementIfVisible(ExpectedConditions.java:314)
-	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:43)
-	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:300)
-	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:297)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:211)
-	at io.cdap.e2e.utils.SeleniumHelper.waitElementIsVisible(SeleniumHelper.java:77)
-	at io.cdap.e2e.pages.actions.CdfPipelineRunAction.runClick(CdfPipelineRunAction.java:17)
-	at stepsDesign.GCSBasicDemo.runThePipelineInRuntime(GCSBasicDemo.java:123)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at cucumber.runtime.Utils$1.call(Utils.java:26)
-	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
-	at cucumber.runtime.Utils.invoke(Utils.java:20)
-	at cucumber.runtime.java.JavaStepDefinition.execute(JavaStepDefinition.java:57)
-	at cucumber.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:50)
-	at cucumber.runner.TestStep.executeStep(TestStep.java:65)
-	at cucumber.runner.TestStep.run(TestStep.java:50)
-	at cucumber.runner.PickleStepTestStep.run(PickleStepTestStep.java:43)
-	at cucumber.runner.TestCase.run(TestCase.java:46)
-	at cucumber.runner.Runner.runPickle(Runner.java:50)
-	at io.cucumber.junit.PickleRunners$NoStepDescriptions.run(PickleRunners.java:146)
-	at io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:68)
-	at io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:23)
-	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
-	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
-	at io.cucumber.junit.Cucumber.runChild(Cucumber.java:144)
-	at io.cucumber.junit.Cucumber.runChild(Cucumber.java:65)
-	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
-	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
-	at io.cucumber.junit.Cucumber$RunCucumber.evaluate(Cucumber.java:174)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:364)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:272)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:237)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:158)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
-	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
-	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
-</textarea>
+		<li test-id='22' class='node then pass' status='pass'>
+			<div class="step-name" title="GCSBasicDemo.runThePipelineInRuntime()"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Then Run the Pipeline in Runtime</div>
+			<div class="node-step"></div>
 		</li>
 		<li test-id='23' class='node * pass' status='pass'>
 			<div class="step-name" title=""><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>AfterActions.tearDown(Scenario)</div>
 			<div class="node-step"></div>
 		</li>
-		<li test-id='24' class='node then skip' status='skip'>
-			<div class="step-name" title="GCSBasicDemo.waitTillPipelineIsInRunningState()"><span class='status skip' title='skip'><i class='material-icons'>redo</i></span>Then Wait till pipeline is in running state</div>
-			<div class="node-step">Step skipped</div>
+		<li test-id='24' class='node then pass' status='pass'>
+			<div class="step-name" title="GCSBasicDemo.waitTillPipelineIsInRunningState()"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Then Wait till pipeline is in running state</div>
+			<div class="node-step"></div>
 		</li>
-		<li test-id='25' class='node * skip' status='skip'>
-			<div class="step-name" title=""><span class='status skip' title='skip'><i class='material-icons'>redo</i></span>AfterActions.tearDown(Scenario)</div>
-			<div class="node-step">Step skipped</div>
+		<li test-id='25' class='node * pass' status='pass'>
+			<div class="step-name" title=""><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>AfterActions.tearDown(Scenario)</div>
+			<div class="node-step"></div>
 		</li>
-		<li test-id='26' class='node then skip' status='skip'>
-			<div class="step-name" title="GCSBasicDemo.verifyThePipelineStatusIs(String)"><span class='status skip' title='skip'><i class='material-icons'>redo</i></span>Then Verify the pipeline status is "Succeeded"</div>
-			<div class="node-step">Step skipped</div>
+		<li test-id='26' class='node then fail' status='fail'>
+			<div class="step-name" title="GCSBasicDemo.verifyThePipelineStatusIs(String)"><span class='status fail' title='fail'><i class='material-icons'>cancel</i></span>Then Verify the pipeline status is "Succeeded"</div>
+			<textarea disabled class="code-block">java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at stepsDesign.GCSBasicDemo.verifyThePipelineStatusIs(GCSBasicDemo.java:138)
+	at ✽.Verify the pipeline status is "Succeeded"(file:src/test/resources/Test/DemoGcs.feature:16)
+</textarea>
 		</li>
-		<li test-id='27' class='node * skip' status='skip'>
-			<div class="step-name" title=""><span class='status skip' title='skip'><i class='material-icons'>redo</i></span>AfterActions.tearDown(Scenario)</div>
-			<div class="node-step">Step skipped</div>
+		<li test-id='27' class='node * pass' status='pass'>
+			<div class="step-name" title=""><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>AfterActions.tearDown(Scenario)</div>
+			<div class="node-step"></div>
 		</li>
 		<li test-id='28' class='node then skip' status='skip'>
 			<div class="step-name" title="GCSBasicDemo.openLogs()"><span class='status skip' title='skip'><i class='material-icons'>redo</i></span>Then Open Logs</div>
@@ -481,7 +403,7 @@ Session ID: 63f86c0171f544a7a79b5ecc1bc0d088
 								</thead>
 								<tbody>
 									<tr>
-										<td>Sep 29, 2021 06:33:39 PM</td>
+										<td>Sep 29, 2021 06:51:11 PM</td>
 										<td class='linked' test-id='2'>User is able to Login and confirm data is getting transferred from GCS to BigQuery</td>
 										<td><span class='test-status fail'>fail</span></td>
 									</tr>
@@ -519,7 +441,7 @@ Session ID: 63f86c0171f544a7a79b5ecc1bc0d088
 			<ul id='exception-collection' class='exception-collection'>
 				<li class='exception displayed active'>
 					<div class='exception-heading'>
-						<span class='exception-name'>org.openqa.selenium.TimeoutException</span>
+						<span class='exception-name'>java.lang.AssertionError</span>
 						<span class='exception-count right'><span class='label red lighten-1 white-text'>1</span></span>
 					</div>
 					<div class='exception-content hide'>
@@ -534,93 +456,15 @@ Session ID: 63f86c0171f544a7a79b5ecc1bc0d088
 								</thead>
 								<tbody>
 									<tr>
-										<td>Sep 29, 2021 06:34:23 PM</td>
-										<td class='linked' test-id='22'>Then Run the Pipeline in Runtime</td>
+										<td>Sep 29, 2021 06:52:48 PM</td>
+										<td class='linked' test-id='26'>Then Verify the pipeline status is "Succeeded"</td>
 										<td>
-											<textarea disabled class="code-block">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //*[@class="icon-svg icon-play"]' (tried for 60 second(s) with 500 milliseconds interval)
-	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
-	at io.cdap.e2e.utils.SeleniumHelper.waitElementIsVisible(SeleniumHelper.java:77)
-	at io.cdap.e2e.pages.actions.CdfPipelineRunAction.runClick(CdfPipelineRunAction.java:17)
-	at stepsDesign.GCSBasicDemo.runThePipelineInRuntime(GCSBasicDemo.java:123)
-	at ✽.Run the Pipeline in Runtime(file:src/test/resources/Test/DemoGcs.feature:14)
-Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@class="icon-svg icon-play"]"}
-  (Session info: headless chrome=92.0.4515.159)
-For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
-Build info: version: '4.0.0-rc-1', revision: 'bc5511cbda'
-System info: host: 'runner-deployment-build-data-integrations-e2e-69959c6456-6n2ph', ip: '10.116.12.6', os.name: 'Linux', os.arch: 'amd64', os.version: '5.4.120+', java.version: '1.8.0_292'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [63f86c0171f544a7a79b5ecc1bc0d088, findElement {using=xpath, value=//*[@class="icon-svg icon-play"]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 92.0.4515.159, chrome: {chromedriverVersion: 92.0.4515.107 (87a818b10553..., userDataDir: /tmp/.com.google.Chrome.WCscjs}, goog:chromeOptions: {debuggerAddress: localhost:34897}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), se:cdp: ws://localhost:34897/devtoo..., se:cdpVersion: 92.0.4515.159, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: 63f86c0171f544a7a79b5ecc1bc0d088
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:164)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:139)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:547)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:162)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:381)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:373)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:70)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:39)
-	at com.sun.proxy.$Proxy21.isDisplayed(Unknown Source)
-	at org.openqa.selenium.support.ui.ExpectedConditions.elementIfVisible(ExpectedConditions.java:314)
-	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:43)
-	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:300)
-	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:297)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:211)
-	at io.cdap.e2e.utils.SeleniumHelper.waitElementIsVisible(SeleniumHelper.java:77)
-	at io.cdap.e2e.pages.actions.CdfPipelineRunAction.runClick(CdfPipelineRunAction.java:17)
-	at stepsDesign.GCSBasicDemo.runThePipelineInRuntime(GCSBasicDemo.java:123)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at cucumber.runtime.Utils$1.call(Utils.java:26)
-	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
-	at cucumber.runtime.Utils.invoke(Utils.java:20)
-	at cucumber.runtime.java.JavaStepDefinition.execute(JavaStepDefinition.java:57)
-	at cucumber.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:50)
-	at cucumber.runner.TestStep.executeStep(TestStep.java:65)
-	at cucumber.runner.TestStep.run(TestStep.java:50)
-	at cucumber.runner.PickleStepTestStep.run(PickleStepTestStep.java:43)
-	at cucumber.runner.TestCase.run(TestCase.java:46)
-	at cucumber.runner.Runner.runPickle(Runner.java:50)
-	at io.cucumber.junit.PickleRunners$NoStepDescriptions.run(PickleRunners.java:146)
-	at io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:68)
-	at io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:23)
-	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
-	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
-	at io.cucumber.junit.Cucumber.runChild(Cucumber.java:144)
-	at io.cucumber.junit.Cucumber.runChild(Cucumber.java:65)
-	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
-	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
-	at io.cucumber.junit.Cucumber$RunCucumber.evaluate(Cucumber.java:174)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:364)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:272)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:237)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:158)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
-	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
-	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+											<textarea disabled class="code-block">java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at stepsDesign.GCSBasicDemo.verifyThePipelineStatusIs(GCSBasicDemo.java:138)
+	at ✽.Verify the pipeline status is "Succeeded"(file:src/test/resources/Test/DemoGcs.feature:16)
 </textarea>
 										</td>
 									</tr>
@@ -664,19 +508,19 @@ Session ID: 63f86c0171f544a7a79b5ecc1bc0d088
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Sep 29, 2021 06:33:36 PM</div>
+					<div class='panel-lead'>Sep 29, 2021 06:51:10 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Sep 29, 2021 06:36:53 PM</div>
+			 		<div class='panel-lead'>Sep 29, 2021 06:53:39 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>0h 3m 17s+35ms</div>
+					<div class='panel-lead'>0h 2m 28s+998ms</div>
 				</div>
 			</div>
 			<div class='col s6'>
@@ -730,20 +574,20 @@ Session ID: 63f86c0171f544a7a79b5ecc1bc0d088
 				debugChild: 0,
 				exceptionsChild: 1,
 				grandChildCount: 32,
-				passGrandChild: 19,
+				passGrandChild: 23,
 				failGrandChild: 1,
 				fatalGrandChild: 0,
 				errorGrandChild: 0,
 				warningGrandChild: 0,
-				skipGrandChild: 12,
+				skipGrandChild: 8,
 				infoGrandChild: 0,
 				debugGrandChild: 0,
-				exceptionsGrandChild: 13,
+				exceptionsGrandChild: 9,
 			};
 		</script>
 		<script>
 			var timeline = {
-			        "Demo1":194.583
+			        "Demo1":147.571
 			};
 		</script>
 	
