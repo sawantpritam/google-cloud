@@ -58,7 +58,7 @@
 		<!-- nav-right -->
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<a href='#!'>
-			<span class='label blue darken-3 suite-start-time'>Sep 29, 2021 08:00:13 PM</span>
+			<span class='label blue darken-3 suite-start-time'>Oct 1, 2021 04:29:50 PM</span>
 			</a>
 		</ul>
 	</div>
@@ -158,12 +158,12 @@
                     <canvas id='grandchild-analysis' width='90' height='70'></canvas>
                 </div>
                 <div class='block text-small'>
-                    <span class='tooltipped' data-position='top' data-tooltip='71.875%'><span class='strong'>23</span> step(s) passed</span>
+                    <span class='tooltipped' data-position='top' data-tooltip='78.125%'><span class='strong'>25</span> step(s) passed</span>
                 </div>
                 <div class='block text-small'>
                     <span class='strong tooltipped' data-position='top' data-tooltip='3.125%'>1</span> scenario(s) failed, 
-                    <span class='strong tooltipped' data-position='top' data-tooltip='25%'>8</span> skipped, 
-                    <span class='strong tooltipped' data-position='top' data-tooltip='25%'>0</span> others
+                    <span class='strong tooltipped' data-position='top' data-tooltip='18.75%'>6</span> skipped, 
+                    <span class='strong tooltipped' data-position='top' data-tooltip='18.75%'>0</span> others
                 </div>
             </div>
         </div>
@@ -184,7 +184,7 @@
 				<li class='test displayed active has-leaf fail' status='fail' bdd='true' test-id='1'>
 					<div class='test-heading'>
 						<span class='test-name'>Demo1</span>
-						<span class='test-time'>Sep 29, 2021 08:00:15 PM</span>
+						<span class='test-time'>Oct 1, 2021 04:29:52 PM</span>
 						<span class='test-status right fail'>fail</span>
 					</div>
 					<div class='test-content hide'>
@@ -198,7 +198,7 @@
 	<div class='category-list'>
 		<span class='category label'>@TC-Demo-1</span>
 	</div>
-	<span class='duration right label'>0h 2m 27s+728ms</span>
+	<span class='duration right label'>0h 2m 28s+285ms</span>
 	<div class="bdd-test">
 		<div class="scenario-name"><span class='status fail' title='fail'><i class='material-icons'>cancel</i></span> Scenario: User is able to Login and confirm data is getting transferred from GCS to BigQuery</div>
 	</div>
@@ -291,27 +291,261 @@
 			<div class="step-name" title=""><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>AfterActions.tearDown(Scenario)</div>
 			<div class="node-step"></div>
 		</li>
-		<li test-id='26' class='node then fail' status='fail'>
-			<div class="step-name" title="GCSBasicDemo.verifyThePipelineStatusIs(String)"><span class='status fail' title='fail'><i class='material-icons'>cancel</i></span>Then Verify the pipeline status is "Succeeded"</div>
-			<textarea disabled class="code-block">java.lang.AssertionError
-	at org.junit.Assert.fail(Assert.java:87)
-	at org.junit.Assert.assertTrue(Assert.java:42)
-	at org.junit.Assert.assertTrue(Assert.java:53)
-	at stepsDesign.GCSBasicDemo.verifyThePipelineStatusIs(GCSBasicDemo.java:138)
-	at ✽.Verify the pipeline status is "Succeeded"(file:src/test/resources/Test/DemoGcs.feature:16)
-</textarea>
+		<li test-id='26' class='node then pass' status='pass'>
+			<div class="step-name" title="GCSBasicDemo.openLogs()"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Then Open Logs</div>
+			<div class="node-step">2021-10-01 16:30:40,286 - DEBUG [provisioning-task-0:i.c.c.i.p.t.ProvisioningTask@125] - Executing PROVISION subtask REQUESTING_CREATE for program run program_run:default.TestPipeline2ab8709a-79ca-4927-a20f-f70ec054079b.-SNAPSHOT.workflow.DataPipelineWorkflow.e9bef5e4-22d4-11ec-bae4-eee09c71e460.
+2021-10-01 16:30:40,289 - DEBUG [provisioning-task-0:i.c.c.i.p.t.ProvisioningTask@129] - Completed PROVISION subtask REQUESTING_CREATE for program run program_run:default.TestPipeline2ab8709a-79ca-4927-a20f-f70ec054079b.-SNAPSHOT.workflow.DataPipelineWorkflow.e9bef5e4-22d4-11ec-bae4-eee09c71e460.
+2021-10-01 16:30:40,311 - DEBUG [provisioning-task-0:i.c.c.i.p.t.ProvisioningTask@116] - Completed PROVISION task for program run program_run:default.TestPipeline2ab8709a-79ca-4927-a20f-f70ec054079b.-SNAPSHOT.workflow.DataPipelineWorkflow.e9bef5e4-22d4-11ec-bae4-eee09c71e460.
+2021-10-01 16:30:43,859 - INFO  [WorkflowDriver:i.c.c.d.SmartWorkflow@470] - Pipeline 'TestPipeline2ab8709a-79ca-4927-a20f-f70ec054079b' is started by user 'runner' with arguments {logical.start.time=1633105839166}
+2021-10-01 16:30:43,900 - INFO  [WorkflowDriver:i.c.c.d.SmartWorkflow@505] - Pipeline 'TestPipeline2ab8709a-79ca-4927-a20f-f70ec054079b' running
+2021-10-01 16:30:43,906 - DEBUG [WorkflowDriver:i.c.c.i.a.r.w.WorkflowProgramController@71] - Workflow service workflow.default.TestPipeline2ab8709a-79ca-4927-a20f-f70ec054079b.DataPipelineWorkflow.e9bef5e4-22d4-11ec-bae4-eee09c71e460 started
+2021-10-01 16:30:43,907 - INFO  [WorkflowDriver:i.c.c.i.a.r.w.WorkflowDriver@623] - Starting workflow execution for 'DataPipelineWorkflow' with Run id 'e9bef5e4-22d4-11ec-bae4-eee09c71e460'
+2021-10-01 16:30:43,939 - INFO  [action-phase-1-0:i.c.c.i.a.r.w.WorkflowDriver@337] - Starting Spark Program 'phase-1' in workflow
+2021-10-01 16:30:43,981 - DEBUG [action-phase-1-0:i.c.c.a.r.s.SparkProgramRunner@231] - Starting Spark Job. Context: SparkRuntimeContext{id=program:default.TestPipeline2ab8709a-79ca-4927-a20f-f70ec054079b.-SNAPSHOT.spark.phase-1, runId=ec971c25-22d4-11ec-a3b5-eee09c71e460}
+2021-10-01 16:30:46,372 - ERROR [SparkRunnerphase-1:i.c.c.i.a.r.ProgramControllerServiceAdapter@92] - Spark Program 'phase-1' failed.
+org.apache.tephra.TransactionFailureException: Exception raised from TxRunnable.run() io.cdap.cdap.internal.app.runtime.AbstractContext$$Lambda$453/1903216061@2a2721d8
+ at io.cdap.cdap.data2.transaction.Transactions$CacheBasedTransactional.finishExecute(Transactions.java:226) ~[na:na]
+ at io.cdap.cdap.data2.transaction.Transactions$CacheBasedTransactional.execute(Transactions.java:211) ~[na:na]
+ at io.cdap.cdap.internal.app.runtime.AbstractContext.execute(AbstractContext.java:514) ~[na:na]
+ at io.cdap.cdap.internal.app.runtime.AbstractContext.execute(AbstractContext.java:502) ~[na:na]
+ at io.cdap.cdap.app.runtime.spark.BasicSparkClientContext.execute(BasicSparkClientContext.java:342) ~[io.cdap.cdap.cdap-spark-core2_2.11-6.6.0-SNAPSHOT.jar:na]
+ at io.cdap.cdap.etl.common.submit.SubmitterPlugin.prepareRun(SubmitterPlugin.java:69) ~[na:na]
+ at io.cdap.cdap.etl.common.submit.PipelinePhasePreparer.prepare(PipelinePhasePreparer.java:148) ~[na:na]
+ at io.cdap.cdap.etl.spark.AbstractSparkPreparer.prepare(AbstractSparkPreparer.java:87) ~[na:na]
+ at io.cdap.cdap.etl.spark.batch.SparkPreparer.prepare(SparkPreparer.java:90) ~[na:na]
+ at io.cdap.cdap.etl.spark.batch.ETLSpark.initialize(ETLSpark.java:120) ~[na:na]
+ at io.cdap.cdap.api.spark.AbstractSpark.initialize(AbstractSpark.java:131) ~[na:na]
+ at io.cdap.cdap.api.spark.AbstractSpark.initialize(AbstractSpark.java:33) ~[na:na]
+ at io.cdap.cdap.app.runtime.spark.SparkRuntimeService$2.initialize(SparkRuntimeService.java:167) ~[io.cdap.cdap.cdap-spark-core2_2.11-6.6.0-SNAPSHOT.jar:na]
+ at io.cdap.cdap.app.runtime.spark.SparkRuntimeService$2.initialize(SparkRuntimeService.java:162) ~[io.cdap.cdap.cdap-spark-core2_2.11-6.6.0-SNAPSHOT.jar:na]
+ at io.cdap.cdap.internal.app.runtime.AbstractContext.lambda$initializeProgram$6(AbstractContext.java:602) ~[na:na]
+ at io.cdap.cdap.internal.app.runtime.AbstractContext.execute(AbstractContext.java:562) ~[na:na]
+ at io.cdap.cdap.internal.app.runtime.AbstractContext.initializeProgram(AbstractContext.java:599) ~[na:na]
+ at io.cdap.cdap.app.runtime.spark.SparkRuntimeService.initialize(SparkRuntimeService.java:433) ~[io.cdap.cdap.cdap-spark-core2_2.11-6.6.0-SNAPSHOT.jar:na]
+ at io.cdap.cdap.app.runtime.spark.SparkRuntimeService.startUp(SparkRuntimeService.java:208) ~[io.cdap.cdap.cdap-spark-core2_2.11-6.6.0-SNAPSHOT.jar:na]
+ at com.google.common.util.concurrent.AbstractExecutionThreadService$1$1.run(AbstractExecutionThreadService.java:47) ~[com.google.guava.guava-13.0.1.jar:na]
+ at io.cdap.cdap.app.runtime.spark.SparkRuntimeService$5$1.run(SparkRuntimeService.java:404) [io.cdap.cdap.cdap-spark-core2_2.11-6.6.0-SNAPSHOT.jar:na]
+ at java.lang.Thread.run(Thread.java:748) [na:1.8.0_292]
+Caused by: java.io.IOException: Error accessing gs://cdf-athena-test/test.csv
+ at com.google.cloud.hadoop.gcsio.GoogleCloudStorageImpl.getObject(GoogleCloudStorageImpl.java:1911) ~[na:na]
+ at com.google.cloud.hadoop.gcsio.GoogleCloudStorageImpl.getItemInfo(GoogleCloudStorageImpl.java:1813) ~[na:na]
+ at com.google.cloud.hadoop.gcsio.GoogleCloudStorageFileSystem.getFileInfoInternal(GoogleCloudStorageFileSystem.java:1127) ~[na:na]
+ at com.google.cloud.hadoop.gcsio.GoogleCloudStorageFileSystem.getFileInfo(GoogleCloudStorageFileSystem.java:1095) ~[na:na]
+ at com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystemBase.getFileStatus(GoogleHadoopFileSystemBase.java:1038) ~[na:na]
+ at org.apache.hadoop.fs.Globber.getFileStatus(Globber.java:64) ~[org.apache.hadoop.hadoop-common-2.8.0.jar:na]
+ at org.apache.hadoop.fs.Globber.doGlob(Globber.java:269) ~[org.apache.hadoop.hadoop-common-2.8.0.jar:na]
+ at org.apache.hadoop.fs.Globber.glob(Globber.java:148) ~[org.apache.hadoop.hadoop-common-2.8.0.jar:na]
+ at org.apache.hadoop.fs.FileSystem.globStatus(FileSystem.java:1704) ~[org.apache.hadoop.hadoop-common-2.8.0.jar:na]
+ at com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystemBase.globStatus(GoogleHadoopFileSystemBase.java:1186) ~[na:na]
+ at com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystemBase.globStatus(GoogleHadoopFileSystemBase.java:1147) ~[na:na]
+ at io.cdap.plugin.format.plugin.AbstractFileSource.prepareRun(AbstractFileSource.java:188) ~[na:na]
+ at io.cdap.plugin.format.plugin.AbstractFileSource.prepareRun(AbstractFileSource.java:73) ~[na:na]
+ at io.cdap.cdap.etl.common.plugin.WrappedBatchSource.lambda$prepareRun$0(WrappedBatchSource.java:51) ~[na:na]
+ at io.cdap.cdap.etl.common.plugin.Caller$1.call(Caller.java:30) ~[na:na]
+ at io.cdap.cdap.etl.common.plugin.WrappedBatchSource.prepareRun(WrappedBatchSource.java:50) ~[na:na]
+ at io.cdap.cdap.etl.common.plugin.WrappedBatchSource.prepareRun(WrappedBatchSource.java:36) ~[na:na]
+ at io.cdap.cdap.etl.common.submit.SubmitterPlugin.lambda$prepareRun$2(SubmitterPlugin.java:71) ~[na:na]
+ at io.cdap.cdap.internal.app.runtime.AbstractContext.lambda$execute$3(AbstractContext.java:517) ~[na:na]
+ at io.cdap.cdap.data2.transaction.Transactions$CacheBasedTransactional.finishExecute(Transactions.java:224) ~[na:na]
+ ... 21 common frames omitted
+Caused by: com.google.api.client.googleapis.json.GoogleJsonResponseException: 403 Forbidden
+GET https://storage.googleapis.com/storage/v1/b/cdf-athena-test/o/test.csv
+{
+  "code" : 403,
+  "errors" : [ {
+    "domain" : "global",
+    "message" : "e2e-tests@cdapio-github-builds.iam.gserviceaccount.com does not have storage.objects.get access to the Google Cloud Storage object.",
+    "reason" : "forbidden"
+  } ],
+  "message" : "e2e-tests@cdapio-github-builds.iam.gserviceaccount.com does not have storage.objects.get access to the Google Cloud Storage object."
+}
+ at com.google.api.client.googleapis.json.GoogleJsonResponseException.from(GoogleJsonResponseException.java:146) ~[na:na]
+ at com.google.api.client.googleapis.services.json.AbstractGoogleJsonClientRequest.newExceptionOnError(AbstractGoogleJsonClientRequest.java:118) ~[na:na]
+ at com.google.api.client.googleapis.services.json.AbstractGoogleJsonClientRequest.newExceptionOnError(AbstractGoogleJsonClientRequest.java:37) ~[na:na]
+ at com.google.api.client.googleapis.services.AbstractGoogleClientRequest$1.interceptResponse(AbstractGoogleClientRequest.java:428) ~[na:na]
+ at com.google.api.client.http.HttpRequest.execute(HttpRequest.java:1111) ~[na:na]
+ at com.google.api.client.googleapis.services.AbstractGoogleClientRequest.executeUnparsed(AbstractGoogleClientRequest.java:514) ~[na:na]
+ at com.google.api.client.googleapis.services.AbstractGoogleClientRequest.executeUnparsed(AbstractGoogleClientRequest.java:455) ~[na:na]
+ at com.google.api.client.googleapis.services.AbstractGoogleClientRequest.execute(AbstractGoogleClientRequest.java:565) ~[na:na]
+ at com.google.cloud.hadoop.gcsio.GoogleCloudStorageImpl.getObject(GoogleCloudStorageImpl.java:1905) ~[na:na]
+ ... 40 common frames omitted
+2021-10-01 16:30:46,391 - ERROR [SparkRunnerphase-1:i.c.c.i.a.r.ProgramControllerServiceAdapter@93] - Spark program 'phase-1' failed with error: 403 Forbidden
+GET https://storage.googleapis.com/storage/v1/b/cdf-athena-test/o/test.csv
+{
+  "code" : 403,
+  "errors" : [ {
+    "domain" : "global",
+    "message" : "e2e-tests@cdapio-github-builds.iam.gserviceaccount.com does not have storage.objects.get access to the Google Cloud Storage object.",
+    "reason" : "forbidden"
+  } ],
+  "message" : "e2e-tests@cdapio-github-builds.iam.gserviceaccount.com does not have storage.objects.get access to the Google Cloud Storage object."
+}. Please check the system logs for more details.
+com.google.api.client.googleapis.json.GoogleJsonResponseException: 403 Forbidden
+GET https://storage.googleapis.com/storage/v1/b/cdf-athena-test/o/test.csv
+{
+  "code" : 403,
+  "errors" : [ {
+    "domain" : "global",
+    "message" : "e2e-tests@cdapio-github-builds.iam.gserviceaccount.com does not have storage.objects.get access to the Google Cloud Storage object.",
+    "reason" : "forbidden"
+  } ],
+  "message" : "e2e-tests@cdapio-github-builds.iam.gserviceaccount.com does not have storage.objects.get access to the Google Cloud Storage object."
+}
+ at com.google.api.client.googleapis.json.GoogleJsonResponseException.from(GoogleJsonResponseException.java:146) ~[na:na]
+ at com.google.api.client.googleapis.services.json.AbstractGoogleJsonClientRequest.newExceptionOnError(AbstractGoogleJsonClientRequest.java:118) ~[na:na]
+ at com.google.api.client.googleapis.services.json.AbstractGoogleJsonClientRequest.newExceptionOnError(AbstractGoogleJsonClientRequest.java:37) ~[na:na]
+ at com.google.api.client.googleapis.services.AbstractGoogleClientRequest$1.interceptResponse(AbstractGoogleClientRequest.java:428) ~[na:na]
+ at com.google.api.client.http.HttpRequest.execute(HttpRequest.java:1111) ~[na:na]
+ at com.google.api.client.googleapis.services.AbstractGoogleClientRequest.executeUnparsed(AbstractGoogleClientRequest.java:514) ~[na:na]
+ at com.google.api.client.googleapis.services.AbstractGoogleClientRequest.executeUnparsed(AbstractGoogleClientRequest.java:455) ~[na:na]
+ at com.google.api.client.googleapis.services.AbstractGoogleClientRequest.execute(AbstractGoogleClientRequest.java:565) ~[na:na]
+ at com.google.cloud.hadoop.gcsio.GoogleCloudStorageImpl.getObject(GoogleCloudStorageImpl.java:1905) ~[na:na]
+ at com.google.cloud.hadoop.gcsio.GoogleCloudStorageImpl.getItemInfo(GoogleCloudStorageImpl.java:1813) ~[na:na]
+ at com.google.cloud.hadoop.gcsio.GoogleCloudStorageFileSystem.getFileInfoInternal(GoogleCloudStorageFileSystem.java:1127) ~[na:na]
+ at com.google.cloud.hadoop.gcsio.GoogleCloudStorageFileSystem.getFileInfo(GoogleCloudStorageFileSystem.java:1095) ~[na:na]
+ at com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystemBase.getFileStatus(GoogleHadoopFileSystemBase.java:1038) ~[na:na]
+ at org.apache.hadoop.fs.Globber.getFileStatus(Globber.java:64) ~[org.apache.hadoop.hadoop-common-2.8.0.jar:na]
+ at org.apache.hadoop.fs.Globber.doGlob(Globber.java:269) ~[org.apache.hadoop.hadoop-common-2.8.0.jar:na]
+ at org.apache.hadoop.fs.Globber.glob(Globber.java:148) ~[org.apache.hadoop.hadoop-common-2.8.0.jar:na]
+ at org.apache.hadoop.fs.FileSystem.globStatus(FileSystem.java:1704) ~[org.apache.hadoop.hadoop-common-2.8.0.jar:na]
+ at com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystemBase.globStatus(GoogleHadoopFileSystemBase.java:1186) ~[na:na]
+ at com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystemBase.globStatus(GoogleHadoopFileSystemBase.java:1147) ~[na:na]
+ at io.cdap.plugin.format.plugin.AbstractFileSource.prepareRun(AbstractFileSource.java:188) ~[na:na]
+ at io.cdap.plugin.format.plugin.AbstractFileSource.prepareRun(AbstractFileSource.java:73) ~[na:na]
+ at io.cdap.cdap.etl.common.plugin.WrappedBatchSource.lambda$prepareRun$0(WrappedBatchSource.java:51) ~[na:na]
+ at io.cdap.cdap.etl.common.plugin.Caller$1.call(Caller.java:30) ~[na:na]
+ at io.cdap.cdap.etl.common.plugin.WrappedBatchSource.prepareRun(WrappedBatchSource.java:50) ~[na:na]
+ at io.cdap.cdap.etl.common.plugin.WrappedBatchSource.prepareRun(WrappedBatchSource.java:36) ~[na:na]
+ at io.cdap.cdap.etl.common.submit.SubmitterPlugin.lambda$prepareRun$2(SubmitterPlugin.java:71) ~[na:na]
+ at io.cdap.cdap.internal.app.runtime.AbstractContext.lambda$execute$3(AbstractContext.java:517) ~[na:na]
+ at io.cdap.cdap.data2.transaction.Transactions$CacheBasedTransactional.finishExecute(Transactions.java:224) ~[na:na]
+ at io.cdap.cdap.data2.transaction.Transactions$CacheBasedTransactional.execute(Transactions.java:211) ~[na:na]
+ at io.cdap.cdap.internal.app.runtime.AbstractContext.execute(AbstractContext.java:514) ~[na:na]
+ at io.cdap.cdap.internal.app.runtime.AbstractContext.execute(AbstractContext.java:502) ~[na:na]
+ at io.cdap.cdap.app.runtime.spark.BasicSparkClientContext.execute(BasicSparkClientContext.java:342) ~[io.cdap.cdap.cdap-spark-core2_2.11-6.6.0-SNAPSHOT.jar:na]
+ at io.cdap.cdap.etl.common.submit.SubmitterPlugin.prepareRun(SubmitterPlugin.java:69) ~[na:na]
+ at io.cdap.cdap.etl.common.submit.PipelinePhasePreparer.prepare(PipelinePhasePreparer.java:148) ~[na:na]
+ at io.cdap.cdap.etl.spark.AbstractSparkPreparer.prepare(AbstractSparkPreparer.java:87) ~[na:na]
+ at io.cdap.cdap.etl.spark.batch.SparkPreparer.prepare(SparkPreparer.java:90) ~[na:na]
+ at io.cdap.cdap.etl.spark.batch.ETLSpark.initialize(ETLSpark.java:120) ~[na:na]
+ at io.cdap.cdap.api.spark.AbstractSpark.initialize(AbstractSpark.java:131) ~[na:na]
+ at io.cdap.cdap.api.spark.AbstractSpark.initialize(AbstractSpark.java:33) ~[na:na]
+ at io.cdap.cdap.app.runtime.spark.SparkRuntimeService$2.initialize(SparkRuntimeService.java:167) ~[io.cdap.cdap.cdap-spark-core2_2.11-6.6.0-SNAPSHOT.jar:na]
+ at io.cdap.cdap.app.runtime.spark.SparkRuntimeService$2.initialize(SparkRuntimeService.java:162) ~[io.cdap.cdap.cdap-spark-core2_2.11-6.6.0-SNAPSHOT.jar:na]
+ at io.cdap.cdap.internal.app.runtime.AbstractContext.lambda$initializeProgram$6(AbstractContext.java:602) ~[na:na]
+ at io.cdap.cdap.internal.app.runtime.AbstractContext.execute(AbstractContext.java:562) ~[na:na]
+ at io.cdap.cdap.internal.app.runtime.AbstractContext.initializeProgram(AbstractContext.java:599) ~[na:na]
+ at io.cdap.cdap.app.runtime.spark.SparkRuntimeService.initialize(SparkRuntimeService.java:433) ~[io.cdap.cdap.cdap-spark-core2_2.11-6.6.0-SNAPSHOT.jar:na]
+ at io.cdap.cdap.app.runtime.spark.SparkRuntimeService.startUp(SparkRuntimeService.java:208) ~[io.cdap.cdap.cdap-spark-core2_2.11-6.6.0-SNAPSHOT.jar:na]
+ at com.google.common.util.concurrent.AbstractExecutionThreadService$1$1.run(AbstractExecutionThreadService.java:47) ~[com.google.guava.guava-13.0.1.jar:na]
+ at io.cdap.cdap.app.runtime.spark.SparkRuntimeService$5$1.run(SparkRuntimeService.java:404) [io.cdap.cdap.cdap-spark-core2_2.11-6.6.0-SNAPSHOT.jar:na]
+ at java.lang.Thread.run(Thread.java:748) [na:1.8.0_292]
+2021-10-01 16:30:46,400 - ERROR [WorkflowDriver:i.c.c.d.SmartWorkflow@561] - Pipeline 'TestPipeline2ab8709a-79ca-4927-a20f-f70ec054079b' failed.
+2021-10-01 16:30:46,436 - ERROR [WorkflowDriver:i.c.c.i.a.r.w.WorkflowProgramController@89] - Workflow service 'workflow.default.TestPipeline2ab8709a-79ca-4927-a20f-f70ec054079b.DataPipelineWorkflow.e9bef5e4-22d4-11ec-bae4-eee09c71e460' failed.
+java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.apache.tephra.TransactionFailureException: Exception raised from TxRunnable.run() io.cdap.cdap.internal.app.runtime.AbstractContext$$Lambda$453/1903216061@2a2721d8
+ at java.util.concurrent.FutureTask.report(FutureTask.java:122) ~[na:1.8.0_292]
+ at java.util.concurrent.FutureTask.get(FutureTask.java:192) ~[na:1.8.0_292]
+ at io.cdap.cdap.internal.app.runtime.workflow.WorkflowDriver.executeAction(WorkflowDriver.java:344) ~[na:na]
+ at io.cdap.cdap.internal.app.runtime.workflow.WorkflowDriver.executeNode(WorkflowDriver.java:475) ~[na:na]
+ at io.cdap.cdap.internal.app.runtime.workflow.WorkflowDriver.executeAll(WorkflowDriver.java:641) ~[na:na]
+ at io.cdap.cdap.internal.app.runtime.workflow.WorkflowDriver.run(WorkflowDriver.java:626) ~[na:na]
+ at com.google.common.util.concurrent.AbstractExecutionThreadService$1$1.run(AbstractExecutionThreadService.java:52) ~[com.google.guava.guava-13.0.1.jar:na]
+ at java.lang.Thread.run(Thread.java:748) [na:1.8.0_292]
+Caused by: java.lang.RuntimeException: org.apache.tephra.TransactionFailureException: Exception raised from TxRunnable.run() io.cdap.cdap.internal.app.runtime.AbstractContext$$Lambda$453/1903216061@2a2721d8
+ at com.google.common.base.Throwables.propagate(Throwables.java:160) ~[com.google.guava.guava-13.0.1.jar:na]
+ at io.cdap.cdap.internal.app.runtime.workflow.DefaultProgramWorkflowRunner$1.run(DefaultProgramWorkflowRunner.java:143) ~[na:na]
+ at io.cdap.cdap.internal.app.runtime.workflow.WorkflowDriver$1.call(WorkflowDriver.java:338) ~[na:na]
+ at io.cdap.cdap.internal.app.runtime.workflow.WorkflowDriver$1.call(WorkflowDriver.java:322) ~[na:na]
+ at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[na:1.8.0_292]
+ at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) ~[na:1.8.0_292]
+ at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) ~[na:1.8.0_292]
+ ... 1 common frames omitted
+Caused by: org.apache.tephra.TransactionFailureException: Exception raised from TxRunnable.run() io.cdap.cdap.internal.app.runtime.AbstractContext$$Lambda$453/1903216061@2a2721d8
+ at io.cdap.cdap.data2.transaction.Transactions$CacheBasedTransactional.finishExecute(Transactions.java:226) ~[na:na]
+ at io.cdap.cdap.data2.transaction.Transactions$CacheBasedTransactional.execute(Transactions.java:211) ~[na:na]
+ at io.cdap.cdap.internal.app.runtime.AbstractContext.execute(AbstractContext.java:514) ~[na:na]
+ at io.cdap.cdap.internal.app.runtime.AbstractContext.execute(AbstractContext.java:502) ~[na:na]
+ at io.cdap.cdap.app.runtime.spark.BasicSparkClientContext.execute(BasicSparkClientContext.java:342) ~[na:na]
+ at io.cdap.cdap.etl.common.submit.SubmitterPlugin.prepareRun(SubmitterPlugin.java:69) ~[na:na]
+ at io.cdap.cdap.etl.common.submit.PipelinePhasePreparer.prepare(PipelinePhasePreparer.java:148) ~[na:na]
+ at io.cdap.cdap.etl.spark.AbstractSparkPreparer.prepare(AbstractSparkPreparer.java:87) ~[na:na]
+ at io.cdap.cdap.etl.spark.batch.SparkPreparer.prepare(SparkPreparer.java:90) ~[na:na]
+ at io.cdap.cdap.etl.spark.batch.ETLSpark.initialize(ETLSpark.java:120) ~[na:na]
+ at io.cdap.cdap.api.spark.AbstractSpark.initialize(AbstractSpark.java:131) ~[na:na]
+ at io.cdap.cdap.api.spark.AbstractSpark.initialize(AbstractSpark.java:33) ~[na:na]
+ at io.cdap.cdap.app.runtime.spark.SparkRuntimeService$2.initialize(SparkRuntimeService.java:167) ~[na:na]
+ at io.cdap.cdap.app.runtime.spark.SparkRuntimeService$2.initialize(SparkRuntimeService.java:162) ~[na:na]
+ at io.cdap.cdap.internal.app.runtime.AbstractContext.lambda$initializeProgram$6(AbstractContext.java:602) ~[na:na]
+ at io.cdap.cdap.internal.app.runtime.AbstractContext.execute(AbstractContext.java:562) ~[na:na]
+ at io.cdap.cdap.internal.app.runtime.AbstractContext.initializeProgram(AbstractContext.java:599) ~[na:na]
+ at io.cdap.cdap.app.runtime.spark.SparkRuntimeService.initialize(SparkRuntimeService.java:433) ~[na:na]
+ at io.cdap.cdap.app.runtime.spark.SparkRuntimeService.startUp(SparkRuntimeService.java:208) ~[na:na]
+ at com.google.common.util.concurrent.AbstractExecutionThreadService$1$1.run(AbstractExecutionThreadService.java:47) ~[com.google.guava.guava-13.0.1.jar:na]
+ at io.cdap.cdap.app.runtime.spark.SparkRuntimeService$5$1.run(SparkRuntimeService.java:404) ~[na:na]
+ ... 1 common frames omitted
+Caused by: java.io.IOException: Error accessing gs://cdf-athena-test/test.csv
+ at com.google.cloud.hadoop.gcsio.GoogleCloudStorageImpl.getObject(GoogleCloudStorageImpl.java:1911) ~[na:na]
+ at com.google.cloud.hadoop.gcsio.GoogleCloudStorageImpl.getItemInfo(GoogleCloudStorageImpl.java:1813) ~[na:na]
+ at com.google.cloud.hadoop.gcsio.GoogleCloudStorageFileSystem.getFileInfoInternal(GoogleCloudStorageFileSystem.java:1127) ~[na:na]
+ at com.google.cloud.hadoop.gcsio.GoogleCloudStorageFileSystem.getFileInfo(GoogleCloudStorageFileSystem.java:1095) ~[na:na]
+ at com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystemBase.getFileStatus(GoogleHadoopFileSystemBase.java:1038) ~[na:na]
+ at org.apache.hadoop.fs.Globber.getFileStatus(Globber.java:64) ~[org.apache.hadoop.hadoop-common-2.8.0.jar:na]
+ at org.apache.hadoop.fs.Globber.doGlob(Globber.java:269) ~[org.apache.hadoop.hadoop-common-2.8.0.jar:na]
+ at org.apache.hadoop.fs.Globber.glob(Globber.java:148) ~[org.apache.hadoop.hadoop-common-2.8.0.jar:na]
+ at org.apache.hadoop.fs.FileSystem.globStatus(FileSystem.java:1704) ~[org.apache.hadoop.hadoop-common-2.8.0.jar:na]
+ at com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystemBase.globStatus(GoogleHadoopFileSystemBase.java:1186) ~[na:na]
+ at com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystemBase.globStatus(GoogleHadoopFileSystemBase.java:1147) ~[na:na]
+ at io.cdap.plugin.format.plugin.AbstractFileSource.prepareRun(AbstractFileSource.java:188) ~[na:na]
+ at io.cdap.plugin.format.plugin.AbstractFileSource.prepareRun(AbstractFileSource.java:73) ~[na:na]
+ at io.cdap.cdap.etl.common.plugin.WrappedBatchSource.lambda$prepareRun$0(WrappedBatchSource.java:51) ~[na:na]
+ at io.cdap.cdap.etl.common.plugin.Caller$1.call(Caller.java:30) ~[na:na]
+ at io.cdap.cdap.etl.common.plugin.WrappedBatchSource.prepareRun(WrappedBatchSource.java:50) ~[na:na]
+ at io.cdap.cdap.etl.common.plugin.WrappedBatchSource.prepareRun(WrappedBatchSource.java:36) ~[na:na]
+ at io.cdap.cdap.etl.common.submit.SubmitterPlugin.lambda$prepareRun$2(SubmitterPlugin.java:71) ~[na:na]
+ at io.cdap.cdap.internal.app.runtime.AbstractContext.lambda$execute$3(AbstractContext.java:517) ~[na:na]
+ at io.cdap.cdap.data2.transaction.Transactions$CacheBasedTransactional.finishExecute(Transactions.java:224) ~[na:na]
+ ... 21 common frames omitted
+Caused by: com.google.api.client.googleapis.json.GoogleJsonResponseException: 403 Forbidden
+GET https://storage.googleapis.com/storage/v1/b/cdf-athena-test/o/test.csv
+{
+  "code" : 403,
+  "errors" : [ {
+    "domain" : "global",
+    "message" : "e2e-tests@cdapio-github-builds.iam.gserviceaccount.com does not have storage.objects.get access to the Google Cloud Storage object.",
+    "reason" : "forbidden"
+  } ],
+  "message" : "e2e-tests@cdapio-github-builds.iam.gserviceaccount.com does not have storage.objects.get access to the Google Cloud Storage object."
+}
+ at com.google.api.client.googleapis.json.GoogleJsonResponseException.from(GoogleJsonResponseException.java:146) ~[na:na]
+ at com.google.api.client.googleapis.services.json.AbstractGoogleJsonClientRequest.newExceptionOnError(AbstractGoogleJsonClientRequest.java:118) ~[na:na]
+ at com.google.api.client.googleapis.services.json.AbstractGoogleJsonClientRequest.newExceptionOnError(AbstractGoogleJsonClientRequest.java:37) ~[na:na]
+ at com.google.api.client.googleapis.services.AbstractGoogleClientRequest$1.interceptResponse(AbstractGoogleClientRequest.java:428) ~[na:na]
+ at com.google.api.client.http.HttpRequest.execute(HttpRequest.java:1111) ~[na:na]
+ at com.google.api.client.googleapis.services.AbstractGoogleClientRequest.executeUnparsed(AbstractGoogleClientRequest.java:514) ~[na:na]
+ at com.google.api.client.googleapis.services.AbstractGoogleClientRequest.executeUnparsed(AbstractGoogleClientRequest.java:455) ~[na:na]
+ at com.google.api.client.googleapis.services.AbstractGoogleClientRequest.execute(AbstractGoogleClientRequest.java:565) ~[na:na]
+ at com.google.cloud.hadoop.gcsio.GoogleCloudStorageImpl.getObject(GoogleCloudStorageImpl.java:1905) ~[na:na]
+ ... 40 common frames omitted
+2021-10-01 16:30:46,442 - DEBUG [pcontroller-program:default.TestPipeline2ab8709a-79ca-4927-a20f-f70ec054079b.-SNAPSHOT.workflow.DataPipelineWorkflow-e9bef5e4-22d4-11ec-bae4-eee09c71e460-2:i.c.c.a.r.AbstractProgramRuntimeService@564] - RuntimeInfo removed: program_run:default.TestPipeline2ab8709a-79ca-4927-a20f-f70ec054079b.-SNAPSHOT.workflow.DataPipelineWorkflow.e9bef5e4-22d4-11ec-bae4-eee09c71e460
+2021-10-01 16:30:48,356 - DEBUG [provisioning-task-3:i.c.c.i.p.t.ProvisioningTask@116] - Completed DEPROVISION task for program run program_run:default.TestPipeline2ab8709a-79ca-4927-a20f-f70ec054079b.-SNAPSHOT.workflow.DataPipelineWorkflow.e9bef5e4-22d4-11ec-bae4-eee09c71e460.</div>
 		</li>
 		<li test-id='27' class='node * pass' status='pass'>
 			<div class="step-name" title=""><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>AfterActions.tearDown(Scenario)</div>
 			<div class="node-step"></div>
 		</li>
-		<li test-id='28' class='node then skip' status='skip'>
-			<div class="step-name" title="GCSBasicDemo.openLogs()"><span class='status skip' title='skip'><i class='material-icons'>redo</i></span>Then Open Logs</div>
-			<div class="node-step">Step skipped</div>
+		<li test-id='28' class='node then fail' status='fail'>
+			<div class="step-name" title="GCSBasicDemo.verifyThePipelineStatusIs(String)"><span class='status fail' title='fail'><i class='material-icons'>cancel</i></span>Then Verify the pipeline status is "Succeeded"</div>
+			<textarea disabled class="code-block">java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at stepsDesign.GCSBasicDemo.verifyThePipelineStatusIs(GCSBasicDemo.java:140)
+	at ✽.Verify the pipeline status is "Succeeded"(file:src/test/resources/Test/DemoGcs.feature:17)
+</textarea>
 		</li>
-		<li test-id='29' class='node * skip' status='skip'>
-			<div class="step-name" title=""><span class='status skip' title='skip'><i class='material-icons'>redo</i></span>AfterActions.tearDown(Scenario)</div>
-			<div class="node-step">Step skipped</div>
+		<li test-id='29' class='node * pass' status='pass'>
+			<div class="step-name" title=""><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>AfterActions.tearDown(Scenario)</div>
+			<div class="node-step"></div>
 		</li>
 		<li test-id='30' class='node then skip' status='skip'>
 			<div class="step-name" title="GCSBasicDemo.validateSuccessMessageIsDisplayed()"><span class='status skip' title='skip'><i class='material-icons'>redo</i></span>Then validate successMessage is displayed</div>
@@ -403,7 +637,7 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td>Sep 29, 2021 08:00:15 PM</td>
+										<td>Oct 1, 2021 04:29:52 PM</td>
 										<td class='linked' test-id='2'>User is able to Login and confirm data is getting transferred from GCS to BigQuery</td>
 										<td><span class='test-status fail'>fail</span></td>
 									</tr>
@@ -456,15 +690,15 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td>Sep 29, 2021 08:01:52 PM</td>
-										<td class='linked' test-id='26'>Then Verify the pipeline status is "Succeeded"</td>
+										<td>Oct 1, 2021 04:31:30 PM</td>
+										<td class='linked' test-id='28'>Then Verify the pipeline status is "Succeeded"</td>
 										<td>
 											<textarea disabled class="code-block">java.lang.AssertionError
 	at org.junit.Assert.fail(Assert.java:87)
 	at org.junit.Assert.assertTrue(Assert.java:42)
 	at org.junit.Assert.assertTrue(Assert.java:53)
-	at stepsDesign.GCSBasicDemo.verifyThePipelineStatusIs(GCSBasicDemo.java:138)
-	at ✽.Verify the pipeline status is "Succeeded"(file:src/test/resources/Test/DemoGcs.feature:16)
+	at stepsDesign.GCSBasicDemo.verifyThePipelineStatusIs(GCSBasicDemo.java:140)
+	at ✽.Verify the pipeline status is "Succeeded"(file:src/test/resources/Test/DemoGcs.feature:17)
 </textarea>
 										</td>
 									</tr>
@@ -508,19 +742,19 @@
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Sep 29, 2021 08:00:13 PM</div>
+					<div class='panel-lead'>Oct 1, 2021 04:29:50 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Sep 29, 2021 08:02:42 PM</div>
+			 		<div class='panel-lead'>Oct 1, 2021 04:32:20 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>0h 2m 29s+315ms</div>
+					<div class='panel-lead'>0h 2m 30s+231ms</div>
 				</div>
 			</div>
 			<div class='col s6'>
@@ -574,20 +808,20 @@
 				debugChild: 0,
 				exceptionsChild: 1,
 				grandChildCount: 32,
-				passGrandChild: 23,
+				passGrandChild: 25,
 				failGrandChild: 1,
 				fatalGrandChild: 0,
 				errorGrandChild: 0,
 				warningGrandChild: 0,
-				skipGrandChild: 8,
+				skipGrandChild: 6,
 				infoGrandChild: 0,
 				debugGrandChild: 0,
-				exceptionsGrandChild: 9,
+				exceptionsGrandChild: 7,
 			};
 		</script>
 		<script>
 			var timeline = {
-			        "Demo1":147.728
+			        "Demo1":148.285
 			};
 		</script>
 	
