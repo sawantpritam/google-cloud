@@ -57,7 +57,7 @@
 		<!-- nav-right -->
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<a href='#!'>
-			<span class='label blue darken-3 suite-start-time'>Oct 6, 2021 09:27:08 PM</span>
+			<span class='label blue darken-3 suite-start-time'>Oct 6, 2021 09:37:38 PM</span>
 			</a>
 		</ul>
 	</div>
@@ -181,7 +181,7 @@
 				<li class='test displayed active has-leaf pass' status='pass' bdd='true' test-id='1'>
 					<div class='test-heading'>
 						<span class='test-name'>Demo1</span>
-						<span class='test-time'>Oct 6, 2021 09:27:10 PM</span>
+						<span class='test-time'>Oct 6, 2021 09:37:40 PM</span>
 						<span class='test-status right pass'>pass</span>
 					</div>
 					<div class='test-content hide'>
@@ -195,7 +195,7 @@
 	<div class='category-list'>
 		<span class='category label'>@TC-Demo-1</span>
 	</div>
-	<span class='duration right label'>0h 1m 30s+178ms</span>
+	<span class='duration right label'>0h 1m 30s+280ms</span>
 	<div class="bdd-test">
 		<div class="scenario-name"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span> Scenario: User is able to Login and confirm data is getting transferred from GCS to BigQuery</div>
 	</div>
@@ -290,70 +290,70 @@
 		</li>
 		<li test-id='26' class='node then pass' status='pass'>
 			<div class="step-name" title="GCSBasicDemo.openLogs()"><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>Then Open Logs</div>
-			<div class="node-step">2021-10-06 21:27:58,563 - DEBUG [provisioning-task-0:i.c.c.i.p.t.ProvisioningTask@125] - Executing PROVISION subtask REQUESTING_CREATE for program run program_run:default.TestPipeline892d144b-1482-4401-a944-32886e19d029.-SNAPSHOT.workflow.DataPipelineWorkflow.466abb64-26ec-11ec-8301-eee09c71e460.
-2021-10-06 21:27:58,565 - DEBUG [provisioning-task-0:i.c.c.i.p.t.ProvisioningTask@129] - Completed PROVISION subtask REQUESTING_CREATE for program run program_run:default.TestPipeline892d144b-1482-4401-a944-32886e19d029.-SNAPSHOT.workflow.DataPipelineWorkflow.466abb64-26ec-11ec-8301-eee09c71e460.
-2021-10-06 21:27:58,589 - DEBUG [provisioning-task-0:i.c.c.i.p.t.ProvisioningTask@116] - Completed PROVISION task for program run program_run:default.TestPipeline892d144b-1482-4401-a944-32886e19d029.-SNAPSHOT.workflow.DataPipelineWorkflow.466abb64-26ec-11ec-8301-eee09c71e460.
-2021-10-06 21:28:02,162 - INFO  [WorkflowDriver:i.c.c.d.SmartWorkflow@470] - Pipeline 'TestPipeline892d144b-1482-4401-a944-32886e19d029' is started by user 'runner' with arguments {logical.start.time=1633555677718}
-2021-10-06 21:28:02,199 - INFO  [WorkflowDriver:i.c.c.d.SmartWorkflow@505] - Pipeline 'TestPipeline892d144b-1482-4401-a944-32886e19d029' running
-2021-10-06 21:28:02,204 - DEBUG [WorkflowDriver:i.c.c.i.a.r.w.WorkflowProgramController@71] - Workflow service workflow.default.TestPipeline892d144b-1482-4401-a944-32886e19d029.DataPipelineWorkflow.466abb64-26ec-11ec-8301-eee09c71e460 started
-2021-10-06 21:28:02,205 - INFO  [WorkflowDriver:i.c.c.i.a.r.w.WorkflowDriver@623] - Starting workflow execution for 'DataPipelineWorkflow' with Run id '466abb64-26ec-11ec-8301-eee09c71e460'
-2021-10-06 21:28:02,241 - INFO  [action-phase-1-0:i.c.c.i.a.r.w.WorkflowDriver@337] - Starting Spark Program 'phase-1' in workflow
-2021-10-06 21:28:02,287 - DEBUG [action-phase-1-0:i.c.c.a.r.s.SparkProgramRunner@230] - Starting Spark Job. Context: SparkRuntimeContext{id=program:default.TestPipeline892d144b-1482-4401-a944-32886e19d029.-SNAPSHOT.spark.phase-1, runId=491cbc05-26ec-11ec-9db7-eee09c71e460}
-2021-10-06 21:28:06,315 - DEBUG [SparkRunnerphase-1:i.c.p.g.b.s.AbstractBigQuerySink@136] - Init output for table 'DemoCheck1' with schema: {"type":"record","name":"text","fields":[{"name":"name","type":"string"},{"name":"age","type":"int"}]}
-2021-10-06 21:28:06,585 - DEBUG [SparkRunnerphase-1:i.c.c.i.a.r.LocalizationUtils@55] - Hard link file from /tmp/HydratorSpark1268535298420329151.config to /tmp/google-cloud/google-cloud/sandbox/cdap-sandbox-6.6.0-SNAPSHOT/data/tmp/1633555682291-0/HydratorSpark.config
-2021-10-06 21:28:06,610 - DEBUG [spark-submitter-phase-1-491cbc05-26ec-11ec-9db7-eee09c71e460:i.c.c.a.r.s.s.AbstractSparkSubmitter@192] - Calling SparkSubmit for program:default.TestPipeline892d144b-1482-4401-a944-32886e19d029.-SNAPSHOT.spark.phase-1 491cbc05-26ec-11ec-9db7-eee09c71e460: [--master, local[2], --conf, spark.app.name=phase-1, --conf, spark.executor.memory=2048m, --conf, spark.driver.memory=2048m, --conf, spark.local.dir=/tmp/google-cloud/google-cloud/sandbox/cdap-sandbox-6.6.0-SNAPSHOT/data/tmp/1633555682291-0, --conf, spark.driver.cores=1, --conf, spark.yarn.maxAppAttempts=1, --conf, spark.executor.id=TestPipeline892d144b-1482-4401-a944-32886e19d029, --conf, spark.network.timeout=600s, --conf, spark.executor.cores=1, --conf, spark.metrics.conf=/tmp/google-cloud/google-cloud/sandbox/cdap-sandbox-6.6.0-SNAPSHOT/data/tmp/1633555682291-0/metrics.properties, --conf, spark.speculation=false, --conf, spark.sql.caseSensitive=true, --conf, spark.app.id=TestPipeline892d144b-1482-4401-a944-32886e19d029, --conf, spark.maxRemoteBlockSizeFetchToMem=2147483135, --conf, spark.extraListeners=io.cdap.cdap.app.runtime.spark.DelegatingSparkListener, --conf, spark.sql.autoBroadcastJoinThreshold=-1, --conf, spark.executor.extraJavaOptions=-Dstreaming.checkpoint.rewrite.enabled=true, --conf, spark.cdap.localized.resources=["HydratorSpark.config"], --conf, spark.driver.extraJavaOptions=-Dstreaming.checkpoint.rewrite.enabled=true, --class, io.cdap.cdap.app.runtime.spark.SparkMainWrapper, /tmp/google-cloud/google-cloud/sandbox/cdap-sandbox-6.6.0-SNAPSHOT/data/runtime/spark/cdapSparkJob.jar, --cdap.spark.program=program_run:default.TestPipeline892d144b-1482-4401-a944-32886e19d029.-SNAPSHOT.spark.phase-1.491cbc05-26ec-11ec-9db7-eee09c71e460, --cdap.user.main.class=io.cdap.cdap.etl.spark.batch.BatchSparkPipelineDriver]
-2021-10-06 21:28:06,733 - INFO  [SparkDriverHttpService STARTING:i.c.h.NettyHttpService@181] - Starting HTTP Service phase-1-http-service at address localhost/127.0.0.1:0
-2021-10-06 21:28:06,735 - DEBUG [SparkDriverHttpService STARTING:i.c.h.NettyHttpService@191] - Started HTTP Service phase-1-http-service at address /127.0.0.1:43663
-2021-10-06 21:28:06,749 - INFO  [spark-submitter-phase-1-491cbc05-26ec-11ec-9db7-eee09c71e460:i.c.c.a.r.s.SparkMainWrapper$@78] - Launching user spark class class io.cdap.cdap.etl.spark.batch.BatchSparkPipelineDriver
-2021-10-06 21:28:06,840 - WARN  [spark-submitter-phase-1-491cbc05-26ec-11ec-9db7-eee09c71e460:o.a.s.SparkConf@66] - In Spark 1.0 and later spark.local.dir will be overridden by the value set by the cluster manager (via SPARK_LOCAL_DIRS in mesos/standalone and LOCAL_DIRS in YARN).
-2021-10-06 21:28:08,045 - DEBUG [spark-submitter-phase-1-491cbc05-26ec-11ec-9db7-eee09c71e460:i.c.c.a.r.s.SparkMetricsSink@51] - Using SparkMetricsSink for reporting metrics: {class=io.cdap.cdap.app.runtime.spark.SparkMetricsSink}
-2021-10-06 21:28:09,102 - INFO  [spark-submitter-phase-1-491cbc05-26ec-11ec-9db7-eee09c71e460:c.g.c.h.i.b.o.ForwardingBigQueryFileOutputFormat@76] - Using output path 'gs://8e190ec9-7370-4294-84a2-79983644762d/8e190ec9-7370-4294-84a2-79983644762d/input/DemoCheck1-8e190ec9-7370-4294-84a2-79983644762d'.
-2021-10-06 21:28:09,437 - INFO  [spark-submitter-phase-1-491cbc05-26ec-11ec-9db7-eee09c71e460:c.g.c.h.i.b.BigQueryFactory@76] - Bigquery connector version hadoop2-1.0.0
-2021-10-06 21:28:09,439 - INFO  [spark-submitter-phase-1-491cbc05-26ec-11ec-9db7-eee09c71e460:c.g.c.h.i.b.BigQueryFactory@76] - Creating BigQuery from default credential.
-2021-10-06 21:28:09,440 - INFO  [spark-submitter-phase-1-491cbc05-26ec-11ec-9db7-eee09c71e460:c.g.c.h.i.b.BigQueryFactory@76] - Creating BigQuery from given credential.
-2021-10-06 21:28:09,441 - INFO  [spark-submitter-phase-1-491cbc05-26ec-11ec-9db7-eee09c71e460:c.g.c.h.i.b.o.ForwardingBigQueryFileOutputFormat@76] - Delegating functionality to 'AvroOutputFormat'.
-2021-10-06 21:28:09,732 - INFO  [spark-submitter-phase-1-491cbc05-26ec-11ec-9db7-eee09c71e460:c.g.c.h.i.b.o.ForwardingBigQueryFileOutputFormat@76] - Delegating functionality to 'AvroOutputFormat'.
-2021-10-06 21:28:09,806 - INFO  [spark-submitter-phase-1-491cbc05-26ec-11ec-9db7-eee09c71e460:c.g.c.h.i.b.BigQueryFactory@76] - Creating BigQuery from default credential.
-2021-10-06 21:28:09,808 - INFO  [spark-submitter-phase-1-491cbc05-26ec-11ec-9db7-eee09c71e460:c.g.c.h.i.b.BigQueryFactory@76] - Creating BigQuery from given credential.
-2021-10-06 21:28:09,808 - INFO  [spark-submitter-phase-1-491cbc05-26ec-11ec-9db7-eee09c71e460:c.g.c.h.i.b.BigQueryFactory@76] - Creating BigQuery from default credential.
-2021-10-06 21:28:09,809 - INFO  [spark-submitter-phase-1-491cbc05-26ec-11ec-9db7-eee09c71e460:c.g.c.h.i.b.BigQueryFactory@76] - Creating BigQuery from given credential.
-2021-10-06 21:28:10,584 - DEBUG [SparkListenerBus:i.c.c.a.r.s.AbstractSparkExecutionContext@156] - Spark program=program:default.TestPipeline892d144b-1482-4401-a944-32886e19d029.-SNAPSHOT.spark.phase-1, runId=491cbc05-26ec-11ec-9db7-eee09c71e460, jobId=0 starts with auto-commit=false on transaction Transaction{readPointer: 1633555687568000000, transactionId: 1633555688112000000, writePointer: 1633555688112000000, invalids: [1633110226328000000], inProgress: [], firstShortInProgress: 9223372036854775807, type: LONG, checkpointWritePointers: [], visibilityLevel: SNAPSHOT}
-2021-10-06 21:28:10,589 - DEBUG [SparkListenerBus:i.c.c.a.r.s.SparkTransactionHandler@110] - Spark job started: JobTransaction{jobId=0, stageIds=[0], transaction=Transaction{readPointer: 1633555687568000000, transactionId: 1633555688112000000, writePointer: 1633555688112000000, invalids: [1633110226328000000], inProgress: [], firstShortInProgress: 9223372036854775807, type: LONG, checkpointWritePointers: [], visibilityLevel: SNAPSHOT}}
-2021-10-06 21:28:11,063 - INFO  [Executor task launch worker for task 0:c.g.c.h.i.b.o.ForwardingBigQueryFileOutputFormat@76] - Delegating functionality to 'AvroOutputFormat'.
-2021-10-06 21:28:11,201 - INFO  [Executor task launch worker for task 0:c.g.c.h.i.b.BigQueryFactory@76] - Creating BigQuery from default credential.
-2021-10-06 21:28:11,203 - INFO  [Executor task launch worker for task 0:c.g.c.h.i.b.BigQueryFactory@76] - Creating BigQuery from given credential.
-2021-10-06 21:28:11,203 - INFO  [Executor task launch worker for task 0:c.g.c.h.i.b.BigQueryFactory@76] - Creating BigQuery from default credential.
-2021-10-06 21:28:11,204 - INFO  [Executor task launch worker for task 0:c.g.c.h.i.b.BigQueryFactory@76] - Creating BigQuery from given credential.
-2021-10-06 21:28:11,210 - INFO  [Executor task launch worker for task 0:c.g.c.h.i.b.o.ForwardingBigQueryFileOutputFormat@76] - Delegating functionality to 'AvroOutputFormat'.
-2021-10-06 21:28:14,220 - DEBUG [SparkListenerBus:i.c.c.a.r.s.SparkTransactionHandler@144] - Spark job ended: JobTransaction{jobId=0, stageIds=[0], transaction=Transaction{readPointer: 1633555687568000000, transactionId: 1633555688112000000, writePointer: 1633555688112000000, invalids: [1633110226328000000], inProgress: [], firstShortInProgress: 9223372036854775807, type: LONG, checkpointWritePointers: [], visibilityLevel: SNAPSHOT}}
-2021-10-06 21:28:17,614 - DEBUG [spark-submitter-phase-1-491cbc05-26ec-11ec-9db7-eee09c71e460:i.c.p.g.b.s.BigQueryOutputFormat@196] - Allow schema relaxation: 'true'
-2021-10-06 21:28:17,615 - DEBUG [spark-submitter-phase-1-491cbc05-26ec-11ec-9db7-eee09c71e460:i.c.p.g.b.s.BigQueryOutputFormat@198] - Create Partitioned Table type: 'TIME'
-2021-10-06 21:28:17,615 - DEBUG [spark-submitter-phase-1-491cbc05-26ec-11ec-9db7-eee09c71e460:i.c.p.g.b.s.BigQueryOutputFormat@201] - Partition Field: 'null'
-2021-10-06 21:28:17,616 - DEBUG [spark-submitter-phase-1-491cbc05-26ec-11ec-9db7-eee09c71e460:i.c.p.g.b.s.BigQueryOutputFormat@203] - Require partition filter: 'false'
-2021-10-06 21:28:17,616 - DEBUG [spark-submitter-phase-1-491cbc05-26ec-11ec-9db7-eee09c71e460:i.c.p.g.b.s.BigQueryOutputFormat@219] - Partition filter: 'null'
-2021-10-06 21:28:17,617 - INFO  [spark-submitter-phase-1-491cbc05-26ec-11ec-9db7-eee09c71e460:i.c.p.g.b.s.BigQueryOutputFormat@272] - Importing into table 'cdf-athena:test_automation.DemoCheck1' from 1 paths; path[0] is 'gs://8e190ec9-7370-4294-84a2-79983644762d/8e190ec9-7370-4294-84a2-79983644762d/input/DemoCheck1-8e190ec9-7370-4294-84a2-79983644762d/part-r-00000.avro'; awaitCompletion: true
-2021-10-06 21:28:17,622 - INFO  [spark-submitter-phase-1-491cbc05-26ec-11ec-9db7-eee09c71e460:i.c.p.g.b.s.BigQueryOutputFormat@375] - Using schema 'GenericData{classInfo=[fields], {fields=[{"mode":"REQUIRED","name":"name","type":"STRING"}, {"mode":"REQUIRED","name":"age","type":"INTEGER"}]}}' for the load job config.
-2021-10-06 21:28:18,462 - DEBUG [spark-submitter-phase-1-491cbc05-26ec-11ec-9db7-eee09c71e460:i.c.p.g.b.s.BigQueryOutputFormat@503] - Job status (123 ms) 1023f6f8-d344-4e53-b0f6-dba75ec6efa9: RUNNING
-2021-10-06 21:28:28,899 - DEBUG [spark-submitter-phase-1-491cbc05-26ec-11ec-9db7-eee09c71e460:i.c.p.g.b.s.BigQueryOutputFormat@503] - Job status (10560 ms) 1023f6f8-d344-4e53-b0f6-dba75ec6efa9: DONE
-2021-10-06 21:28:29,267 - INFO  [spark-submitter-phase-1-491cbc05-26ec-11ec-9db7-eee09c71e460:i.c.p.g.b.s.BigQueryOutputFormat@408] - Imported into table 'cdf-athena:test_automation.DemoCheck1' from 1 paths; path[0] is 'gs://8e190ec9-7370-4294-84a2-79983644762d/8e190ec9-7370-4294-84a2-79983644762d/input/DemoCheck1-8e190ec9-7370-4294-84a2-79983644762d/part-r-00000.avro'
-2021-10-06 21:28:29,448 - INFO  [spark-submitter-phase-1-491cbc05-26ec-11ec-9db7-eee09c71e460:c.g.c.h.i.b.o.ForwardingBigQueryFileOutputCommitter@76] - Found GCS output data at 'gs://8e190ec9-7370-4294-84a2-79983644762d/8e190ec9-7370-4294-84a2-79983644762d/input/DemoCheck1-8e190ec9-7370-4294-84a2-79983644762d', attempting to clean up.
-2021-10-06 21:28:29,919 - INFO  [spark-submitter-phase-1-491cbc05-26ec-11ec-9db7-eee09c71e460:c.g.c.h.i.b.o.ForwardingBigQueryFileOutputCommitter@76] - Successfully deleted GCS output path 'gs://8e190ec9-7370-4294-84a2-79983644762d/8e190ec9-7370-4294-84a2-79983644762d/input/DemoCheck1-8e190ec9-7370-4294-84a2-79983644762d'.
-2021-10-06 21:28:30,024 - DEBUG [spark-submitter-phase-1-491cbc05-26ec-11ec-9db7-eee09c71e460:i.c.c.a.r.s.SparkRuntimeEnv$@347] - Shutting down Server and ThreadPool used by Spark org.apache.spark.SparkContext@252122a6
-2021-10-06 21:28:30,029 - INFO  [SparkDriverHttpService STOPPING:i.c.h.NettyHttpService@258] - Stopping HTTP Service phase-1-http-service
-2021-10-06 21:28:30,044 - DEBUG [SparkDriverHttpService STOPPING:i.c.h.NettyHttpService@276] - Stopped HTTP Service phase-1-http-service on address localhost/127.0.0.1:43663
-2021-10-06 21:28:30,045 - DEBUG [spark-submitter-phase-1-491cbc05-26ec-11ec-9db7-eee09c71e460:i.c.c.a.r.s.s.AbstractSparkSubmitter@199] - SparkSubmit returned for program:default.TestPipeline892d144b-1482-4401-a944-32886e19d029.-SNAPSHOT.spark.phase-1 491cbc05-26ec-11ec-9db7-eee09c71e460
-2021-10-06 21:28:30,837 - DEBUG [SparkRunnerphase-1:i.c.p.g.b.u.BigQueryUtil@713] - Deleted temporary directory 'gs://8e190ec9-7370-4294-84a2-79983644762d'
-2021-10-06 21:28:31,393 - INFO  [SparkRunnerphase-1:i.c.p.g.b.s.BigQuerySink@139] - Job JobId{project=cdf-athena, job=1023f6f8-d344-4e53-b0f6-dba75ec6efa9, location=US} affected 3 rows
-2021-10-06 21:28:31,395 - DEBUG [SparkRunnerphase-1:i.c.c.a.r.s.SparkRuntimeService@918] - Running Spark shutdown hook org.apache.spark.util.SparkShutdownHookManager$$anon$2@563322f4
-2021-10-06 21:28:31,403 - DEBUG [SparkRunnerphase-1:i.c.c.a.r.s.SparkRuntimeService@395] - Spark program completed: SparkRuntimeContext{id=program:default.TestPipeline892d144b-1482-4401-a944-32886e19d029.-SNAPSHOT.spark.phase-1, runId=491cbc05-26ec-11ec-9db7-eee09c71e460}
-2021-10-06 21:28:31,432 - INFO  [action-phase-1-0:i.c.c.i.a.r.w.WorkflowDriver@340] - Spark Program 'phase-1' in workflow completed
-2021-10-06 21:28:31,434 - INFO  [WorkflowDriver:i.c.c.i.a.r.w.WorkflowDriver@631] - Workflow 'DataPipelineWorkflow' with run id '466abb64-26ec-11ec-8301-eee09c71e460' completed
-2021-10-06 21:28:31,435 - INFO  [WorkflowDriver:i.c.c.d.SmartWorkflow@563] - Pipeline 'TestPipeline892d144b-1482-4401-a944-32886e19d029' succeeded.
-2021-10-06 21:28:31,495 - DEBUG [WorkflowDriver:i.c.c.i.a.r.w.WorkflowProgramController@77] - Workflow service terminated from RUNNING. Un-registering service workflow.default.TestPipeline892d144b-1482-4401-a944-32886e19d029.DataPipelineWorkflow.466abb64-26ec-11ec-8301-eee09c71e460.
-2021-10-06 21:28:31,499 - DEBUG [pcontroller-program:default.TestPipeline892d144b-1482-4401-a944-32886e19d029.-SNAPSHOT.workflow.DataPipelineWorkflow-466abb64-26ec-11ec-8301-eee09c71e460-2:i.c.c.a.r.AbstractProgramRuntimeService@564] - RuntimeInfo removed: program_run:default.TestPipeline892d144b-1482-4401-a944-32886e19d029.-SNAPSHOT.workflow.DataPipelineWorkflow.466abb64-26ec-11ec-8301-eee09c71e460
-2021-10-06 21:28:32,614 - DEBUG [provisioning-task-2:i.c.c.i.p.t.ProvisioningTask@125] - Executing DEPROVISION subtask REQUESTING_DELETE for program run program_run:default.TestPipeline892d144b-1482-4401-a944-32886e19d029.-SNAPSHOT.workflow.DataPipelineWorkflow.466abb64-26ec-11ec-8301-eee09c71e460.
-2021-10-06 21:28:32,615 - DEBUG [provisioning-task-2:i.c.c.i.p.t.ProvisioningTask@129] - Completed DEPROVISION subtask REQUESTING_DELETE for program run program_run:default.TestPipeline892d144b-1482-4401-a944-32886e19d029.-SNAPSHOT.workflow.DataPipelineWorkflow.466abb64-26ec-11ec-8301-eee09c71e460.
-2021-10-06 21:28:32,629 - DEBUG [provisioning-task-3:i.c.c.i.p.t.ProvisioningTask@116] - Completed DEPROVISION task for program run program_run:default.TestPipeline892d144b-1482-4401-a944-32886e19d029.-SNAPSHOT.workflow.DataPipelineWorkflow.466abb64-26ec-11ec-8301-eee09c71e460.</div>
+			<div class="node-step">2021-10-06 21:38:27,862 - DEBUG [provisioning-task-0:i.c.c.i.p.t.ProvisioningTask@125] - Executing PROVISION subtask REQUESTING_CREATE for program run program_run:default.TestPipeline47c3f4e6-aa64-4b34-aef9-568d10dcab2d.-SNAPSHOT.workflow.DataPipelineWorkflow.bd986ab4-26ed-11ec-92d3-eee09c71e460.
+2021-10-06 21:38:27,864 - DEBUG [provisioning-task-0:i.c.c.i.p.t.ProvisioningTask@129] - Completed PROVISION subtask REQUESTING_CREATE for program run program_run:default.TestPipeline47c3f4e6-aa64-4b34-aef9-568d10dcab2d.-SNAPSHOT.workflow.DataPipelineWorkflow.bd986ab4-26ed-11ec-92d3-eee09c71e460.
+2021-10-06 21:38:27,898 - DEBUG [provisioning-task-0:i.c.c.i.p.t.ProvisioningTask@116] - Completed PROVISION task for program run program_run:default.TestPipeline47c3f4e6-aa64-4b34-aef9-568d10dcab2d.-SNAPSHOT.workflow.DataPipelineWorkflow.bd986ab4-26ed-11ec-92d3-eee09c71e460.
+2021-10-06 21:38:31,430 - INFO  [WorkflowDriver:i.c.c.d.SmartWorkflow@470] - Pipeline 'TestPipeline47c3f4e6-aa64-4b34-aef9-568d10dcab2d' is started by user 'runner' with arguments {logical.start.time=1633556307163}
+2021-10-06 21:38:31,469 - INFO  [WorkflowDriver:i.c.c.d.SmartWorkflow@505] - Pipeline 'TestPipeline47c3f4e6-aa64-4b34-aef9-568d10dcab2d' running
+2021-10-06 21:38:31,487 - DEBUG [WorkflowDriver:i.c.c.i.a.r.w.WorkflowProgramController@71] - Workflow service workflow.default.TestPipeline47c3f4e6-aa64-4b34-aef9-568d10dcab2d.DataPipelineWorkflow.bd986ab4-26ed-11ec-92d3-eee09c71e460 started
+2021-10-06 21:38:31,488 - INFO  [WorkflowDriver:i.c.c.i.a.r.w.WorkflowDriver@623] - Starting workflow execution for 'DataPipelineWorkflow' with Run id 'bd986ab4-26ed-11ec-92d3-eee09c71e460'
+2021-10-06 21:38:31,527 - INFO  [action-phase-1-0:i.c.c.i.a.r.w.WorkflowDriver@337] - Starting Spark Program 'phase-1' in workflow
+2021-10-06 21:38:31,571 - DEBUG [action-phase-1-0:i.c.c.a.r.s.SparkProgramRunner@230] - Starting Spark Job. Context: SparkRuntimeContext{id=program:default.TestPipeline47c3f4e6-aa64-4b34-aef9-568d10dcab2d.-SNAPSHOT.spark.phase-1, runId=c0322865-26ed-11ec-b1b2-eee09c71e460}
+2021-10-06 21:38:35,621 - DEBUG [SparkRunnerphase-1:i.c.p.g.b.s.AbstractBigQuerySink@136] - Init output for table 'DemoCheck1' with schema: {"type":"record","name":"text","fields":[{"name":"name","type":"string"},{"name":"age","type":"int"}]}
+2021-10-06 21:38:35,874 - DEBUG [SparkRunnerphase-1:i.c.c.i.a.r.LocalizationUtils@55] - Hard link file from /tmp/HydratorSpark7019059669077033668.config to /tmp/google-cloud/google-cloud/sandbox/cdap-sandbox-6.6.0-SNAPSHOT/data/tmp/1633556311576-0/HydratorSpark.config
+2021-10-06 21:38:35,897 - DEBUG [spark-submitter-phase-1-c0322865-26ed-11ec-b1b2-eee09c71e460:i.c.c.a.r.s.s.AbstractSparkSubmitter@192] - Calling SparkSubmit for program:default.TestPipeline47c3f4e6-aa64-4b34-aef9-568d10dcab2d.-SNAPSHOT.spark.phase-1 c0322865-26ed-11ec-b1b2-eee09c71e460: [--master, local[2], --conf, spark.app.name=phase-1, --conf, spark.executor.memory=2048m, --conf, spark.driver.memory=2048m, --conf, spark.local.dir=/tmp/google-cloud/google-cloud/sandbox/cdap-sandbox-6.6.0-SNAPSHOT/data/tmp/1633556311576-0, --conf, spark.driver.cores=1, --conf, spark.yarn.maxAppAttempts=1, --conf, spark.executor.id=TestPipeline47c3f4e6-aa64-4b34-aef9-568d10dcab2d, --conf, spark.network.timeout=600s, --conf, spark.executor.cores=1, --conf, spark.metrics.conf=/tmp/google-cloud/google-cloud/sandbox/cdap-sandbox-6.6.0-SNAPSHOT/data/tmp/1633556311576-0/metrics.properties, --conf, spark.speculation=false, --conf, spark.sql.caseSensitive=true, --conf, spark.app.id=TestPipeline47c3f4e6-aa64-4b34-aef9-568d10dcab2d, --conf, spark.maxRemoteBlockSizeFetchToMem=2147483135, --conf, spark.extraListeners=io.cdap.cdap.app.runtime.spark.DelegatingSparkListener, --conf, spark.sql.autoBroadcastJoinThreshold=-1, --conf, spark.executor.extraJavaOptions=-Dstreaming.checkpoint.rewrite.enabled=true, --conf, spark.cdap.localized.resources=["HydratorSpark.config"], --conf, spark.driver.extraJavaOptions=-Dstreaming.checkpoint.rewrite.enabled=true, --class, io.cdap.cdap.app.runtime.spark.SparkMainWrapper, /tmp/google-cloud/google-cloud/sandbox/cdap-sandbox-6.6.0-SNAPSHOT/data/runtime/spark/cdapSparkJob.jar, --cdap.spark.program=program_run:default.TestPipeline47c3f4e6-aa64-4b34-aef9-568d10dcab2d.-SNAPSHOT.spark.phase-1.c0322865-26ed-11ec-b1b2-eee09c71e460, --cdap.user.main.class=io.cdap.cdap.etl.spark.batch.BatchSparkPipelineDriver]
+2021-10-06 21:38:36,043 - INFO  [SparkDriverHttpService STARTING:i.c.h.NettyHttpService@181] - Starting HTTP Service phase-1-http-service at address localhost/127.0.0.1:0
+2021-10-06 21:38:36,046 - DEBUG [SparkDriverHttpService STARTING:i.c.h.NettyHttpService@191] - Started HTTP Service phase-1-http-service at address /127.0.0.1:40693
+2021-10-06 21:38:36,062 - INFO  [spark-submitter-phase-1-c0322865-26ed-11ec-b1b2-eee09c71e460:i.c.c.a.r.s.SparkMainWrapper$@78] - Launching user spark class class io.cdap.cdap.etl.spark.batch.BatchSparkPipelineDriver
+2021-10-06 21:38:36,168 - WARN  [spark-submitter-phase-1-c0322865-26ed-11ec-b1b2-eee09c71e460:o.a.s.SparkConf@66] - In Spark 1.0 and later spark.local.dir will be overridden by the value set by the cluster manager (via SPARK_LOCAL_DIRS in mesos/standalone and LOCAL_DIRS in YARN).
+2021-10-06 21:38:37,350 - DEBUG [spark-submitter-phase-1-c0322865-26ed-11ec-b1b2-eee09c71e460:i.c.c.a.r.s.SparkMetricsSink@51] - Using SparkMetricsSink for reporting metrics: {class=io.cdap.cdap.app.runtime.spark.SparkMetricsSink}
+2021-10-06 21:38:38,430 - INFO  [spark-submitter-phase-1-c0322865-26ed-11ec-b1b2-eee09c71e460:c.g.c.h.i.b.o.ForwardingBigQueryFileOutputFormat@76] - Using output path 'gs://e4e7f809-dc5e-4d87-bbbe-4e32b44be71d/e4e7f809-dc5e-4d87-bbbe-4e32b44be71d/input/DemoCheck1-e4e7f809-dc5e-4d87-bbbe-4e32b44be71d'.
+2021-10-06 21:38:38,740 - INFO  [spark-submitter-phase-1-c0322865-26ed-11ec-b1b2-eee09c71e460:c.g.c.h.i.b.BigQueryFactory@76] - Bigquery connector version hadoop2-1.0.0
+2021-10-06 21:38:38,741 - INFO  [spark-submitter-phase-1-c0322865-26ed-11ec-b1b2-eee09c71e460:c.g.c.h.i.b.BigQueryFactory@76] - Creating BigQuery from default credential.
+2021-10-06 21:38:38,743 - INFO  [spark-submitter-phase-1-c0322865-26ed-11ec-b1b2-eee09c71e460:c.g.c.h.i.b.BigQueryFactory@76] - Creating BigQuery from given credential.
+2021-10-06 21:38:38,744 - INFO  [spark-submitter-phase-1-c0322865-26ed-11ec-b1b2-eee09c71e460:c.g.c.h.i.b.o.ForwardingBigQueryFileOutputFormat@76] - Delegating functionality to 'AvroOutputFormat'.
+2021-10-06 21:38:39,033 - INFO  [spark-submitter-phase-1-c0322865-26ed-11ec-b1b2-eee09c71e460:c.g.c.h.i.b.o.ForwardingBigQueryFileOutputFormat@76] - Delegating functionality to 'AvroOutputFormat'.
+2021-10-06 21:38:39,120 - INFO  [spark-submitter-phase-1-c0322865-26ed-11ec-b1b2-eee09c71e460:c.g.c.h.i.b.BigQueryFactory@76] - Creating BigQuery from default credential.
+2021-10-06 21:38:39,121 - INFO  [spark-submitter-phase-1-c0322865-26ed-11ec-b1b2-eee09c71e460:c.g.c.h.i.b.BigQueryFactory@76] - Creating BigQuery from given credential.
+2021-10-06 21:38:39,122 - INFO  [spark-submitter-phase-1-c0322865-26ed-11ec-b1b2-eee09c71e460:c.g.c.h.i.b.BigQueryFactory@76] - Creating BigQuery from default credential.
+2021-10-06 21:38:39,123 - INFO  [spark-submitter-phase-1-c0322865-26ed-11ec-b1b2-eee09c71e460:c.g.c.h.i.b.BigQueryFactory@76] - Creating BigQuery from given credential.
+2021-10-06 21:38:39,971 - DEBUG [SparkListenerBus:i.c.c.a.r.s.AbstractSparkExecutionContext@156] - Spark program=program:default.TestPipeline47c3f4e6-aa64-4b34-aef9-568d10dcab2d.-SNAPSHOT.spark.phase-1, runId=c0322865-26ed-11ec-b1b2-eee09c71e460, jobId=0 starts with auto-commit=false on transaction Transaction{readPointer: 1633556316995000000, transactionId: 1633556317417000000, writePointer: 1633556317417000000, invalids: [1633110226328000000], inProgress: [], firstShortInProgress: 9223372036854775807, type: LONG, checkpointWritePointers: [], visibilityLevel: SNAPSHOT}
+2021-10-06 21:38:39,975 - DEBUG [SparkListenerBus:i.c.c.a.r.s.SparkTransactionHandler@110] - Spark job started: JobTransaction{jobId=0, stageIds=[0], transaction=Transaction{readPointer: 1633556316995000000, transactionId: 1633556317417000000, writePointer: 1633556317417000000, invalids: [1633110226328000000], inProgress: [], firstShortInProgress: 9223372036854775807, type: LONG, checkpointWritePointers: [], visibilityLevel: SNAPSHOT}}
+2021-10-06 21:38:40,443 - INFO  [Executor task launch worker for task 0:c.g.c.h.i.b.o.ForwardingBigQueryFileOutputFormat@76] - Delegating functionality to 'AvroOutputFormat'.
+2021-10-06 21:38:40,534 - INFO  [Executor task launch worker for task 0:c.g.c.h.i.b.BigQueryFactory@76] - Creating BigQuery from default credential.
+2021-10-06 21:38:40,536 - INFO  [Executor task launch worker for task 0:c.g.c.h.i.b.BigQueryFactory@76] - Creating BigQuery from given credential.
+2021-10-06 21:38:40,536 - INFO  [Executor task launch worker for task 0:c.g.c.h.i.b.BigQueryFactory@76] - Creating BigQuery from default credential.
+2021-10-06 21:38:40,538 - INFO  [Executor task launch worker for task 0:c.g.c.h.i.b.BigQueryFactory@76] - Creating BigQuery from given credential.
+2021-10-06 21:38:40,546 - INFO  [Executor task launch worker for task 0:c.g.c.h.i.b.o.ForwardingBigQueryFileOutputFormat@76] - Delegating functionality to 'AvroOutputFormat'.
+2021-10-06 21:38:43,610 - DEBUG [SparkListenerBus:i.c.c.a.r.s.SparkTransactionHandler@144] - Spark job ended: JobTransaction{jobId=0, stageIds=[0], transaction=Transaction{readPointer: 1633556316995000000, transactionId: 1633556317417000000, writePointer: 1633556317417000000, invalids: [1633110226328000000], inProgress: [], firstShortInProgress: 9223372036854775807, type: LONG, checkpointWritePointers: [], visibilityLevel: SNAPSHOT}}
+2021-10-06 21:38:46,862 - DEBUG [spark-submitter-phase-1-c0322865-26ed-11ec-b1b2-eee09c71e460:i.c.p.g.b.s.BigQueryOutputFormat@196] - Allow schema relaxation: 'true'
+2021-10-06 21:38:46,863 - DEBUG [spark-submitter-phase-1-c0322865-26ed-11ec-b1b2-eee09c71e460:i.c.p.g.b.s.BigQueryOutputFormat@198] - Create Partitioned Table type: 'TIME'
+2021-10-06 21:38:46,863 - DEBUG [spark-submitter-phase-1-c0322865-26ed-11ec-b1b2-eee09c71e460:i.c.p.g.b.s.BigQueryOutputFormat@201] - Partition Field: 'null'
+2021-10-06 21:38:46,863 - DEBUG [spark-submitter-phase-1-c0322865-26ed-11ec-b1b2-eee09c71e460:i.c.p.g.b.s.BigQueryOutputFormat@203] - Require partition filter: 'false'
+2021-10-06 21:38:46,864 - DEBUG [spark-submitter-phase-1-c0322865-26ed-11ec-b1b2-eee09c71e460:i.c.p.g.b.s.BigQueryOutputFormat@219] - Partition filter: 'null'
+2021-10-06 21:38:46,864 - INFO  [spark-submitter-phase-1-c0322865-26ed-11ec-b1b2-eee09c71e460:i.c.p.g.b.s.BigQueryOutputFormat@272] - Importing into table 'cdf-athena:test_automation.DemoCheck1' from 1 paths; path[0] is 'gs://e4e7f809-dc5e-4d87-bbbe-4e32b44be71d/e4e7f809-dc5e-4d87-bbbe-4e32b44be71d/input/DemoCheck1-e4e7f809-dc5e-4d87-bbbe-4e32b44be71d/part-r-00000.avro'; awaitCompletion: true
+2021-10-06 21:38:46,869 - INFO  [spark-submitter-phase-1-c0322865-26ed-11ec-b1b2-eee09c71e460:i.c.p.g.b.s.BigQueryOutputFormat@375] - Using schema 'GenericData{classInfo=[fields], {fields=[{"mode":"REQUIRED","name":"name","type":"STRING"}, {"mode":"REQUIRED","name":"age","type":"INTEGER"}]}}' for the load job config.
+2021-10-06 21:38:47,729 - DEBUG [spark-submitter-phase-1-c0322865-26ed-11ec-b1b2-eee09c71e460:i.c.p.g.b.s.BigQueryOutputFormat@503] - Job status (122 ms) df02ac33-135a-4cbd-8db9-f93ecf12aac6: RUNNING
+2021-10-06 21:39:02,246 - DEBUG [spark-submitter-phase-1-c0322865-26ed-11ec-b1b2-eee09c71e460:i.c.p.g.b.s.BigQueryOutputFormat@503] - Job status (14639 ms) df02ac33-135a-4cbd-8db9-f93ecf12aac6: DONE
+2021-10-06 21:39:02,625 - INFO  [spark-submitter-phase-1-c0322865-26ed-11ec-b1b2-eee09c71e460:i.c.p.g.b.s.BigQueryOutputFormat@408] - Imported into table 'cdf-athena:test_automation.DemoCheck1' from 1 paths; path[0] is 'gs://e4e7f809-dc5e-4d87-bbbe-4e32b44be71d/e4e7f809-dc5e-4d87-bbbe-4e32b44be71d/input/DemoCheck1-e4e7f809-dc5e-4d87-bbbe-4e32b44be71d/part-r-00000.avro'
+2021-10-06 21:39:02,816 - INFO  [spark-submitter-phase-1-c0322865-26ed-11ec-b1b2-eee09c71e460:c.g.c.h.i.b.o.ForwardingBigQueryFileOutputCommitter@76] - Found GCS output data at 'gs://e4e7f809-dc5e-4d87-bbbe-4e32b44be71d/e4e7f809-dc5e-4d87-bbbe-4e32b44be71d/input/DemoCheck1-e4e7f809-dc5e-4d87-bbbe-4e32b44be71d', attempting to clean up.
+2021-10-06 21:39:03,328 - INFO  [spark-submitter-phase-1-c0322865-26ed-11ec-b1b2-eee09c71e460:c.g.c.h.i.b.o.ForwardingBigQueryFileOutputCommitter@76] - Successfully deleted GCS output path 'gs://e4e7f809-dc5e-4d87-bbbe-4e32b44be71d/e4e7f809-dc5e-4d87-bbbe-4e32b44be71d/input/DemoCheck1-e4e7f809-dc5e-4d87-bbbe-4e32b44be71d'.
+2021-10-06 21:39:03,442 - DEBUG [spark-submitter-phase-1-c0322865-26ed-11ec-b1b2-eee09c71e460:i.c.c.a.r.s.SparkRuntimeEnv$@347] - Shutting down Server and ThreadPool used by Spark org.apache.spark.SparkContext@4755e7fe
+2021-10-06 21:39:03,447 - INFO  [SparkDriverHttpService STOPPING:i.c.h.NettyHttpService@258] - Stopping HTTP Service phase-1-http-service
+2021-10-06 21:39:03,463 - DEBUG [SparkDriverHttpService STOPPING:i.c.h.NettyHttpService@276] - Stopped HTTP Service phase-1-http-service on address localhost/127.0.0.1:40693
+2021-10-06 21:39:03,464 - DEBUG [spark-submitter-phase-1-c0322865-26ed-11ec-b1b2-eee09c71e460:i.c.c.a.r.s.s.AbstractSparkSubmitter@199] - SparkSubmit returned for program:default.TestPipeline47c3f4e6-aa64-4b34-aef9-568d10dcab2d.-SNAPSHOT.spark.phase-1 c0322865-26ed-11ec-b1b2-eee09c71e460
+2021-10-06 21:39:04,229 - DEBUG [SparkRunnerphase-1:i.c.p.g.b.u.BigQueryUtil@713] - Deleted temporary directory 'gs://e4e7f809-dc5e-4d87-bbbe-4e32b44be71d'
+2021-10-06 21:39:04,691 - INFO  [SparkRunnerphase-1:i.c.p.g.b.s.BigQuerySink@139] - Job JobId{project=cdf-athena, job=df02ac33-135a-4cbd-8db9-f93ecf12aac6, location=US} affected 3 rows
+2021-10-06 21:39:04,693 - DEBUG [SparkRunnerphase-1:i.c.c.a.r.s.SparkRuntimeService@918] - Running Spark shutdown hook org.apache.spark.util.SparkShutdownHookManager$$anon$2@21af61b
+2021-10-06 21:39:04,702 - DEBUG [SparkRunnerphase-1:i.c.c.a.r.s.SparkRuntimeService@395] - Spark program completed: SparkRuntimeContext{id=program:default.TestPipeline47c3f4e6-aa64-4b34-aef9-568d10dcab2d.-SNAPSHOT.spark.phase-1, runId=c0322865-26ed-11ec-b1b2-eee09c71e460}
+2021-10-06 21:39:04,731 - INFO  [action-phase-1-0:i.c.c.i.a.r.w.WorkflowDriver@340] - Spark Program 'phase-1' in workflow completed
+2021-10-06 21:39:04,954 - INFO  [WorkflowDriver:i.c.c.i.a.r.w.WorkflowDriver@631] - Workflow 'DataPipelineWorkflow' with run id 'bd986ab4-26ed-11ec-92d3-eee09c71e460' completed
+2021-10-06 21:39:04,956 - INFO  [WorkflowDriver:i.c.c.d.SmartWorkflow@563] - Pipeline 'TestPipeline47c3f4e6-aa64-4b34-aef9-568d10dcab2d' succeeded.
+2021-10-06 21:39:05,090 - DEBUG [WorkflowDriver:i.c.c.i.a.r.w.WorkflowProgramController@77] - Workflow service terminated from RUNNING. Un-registering service workflow.default.TestPipeline47c3f4e6-aa64-4b34-aef9-568d10dcab2d.DataPipelineWorkflow.bd986ab4-26ed-11ec-92d3-eee09c71e460.
+2021-10-06 21:39:05,095 - DEBUG [pcontroller-program:default.TestPipeline47c3f4e6-aa64-4b34-aef9-568d10dcab2d.-SNAPSHOT.workflow.DataPipelineWorkflow-bd986ab4-26ed-11ec-92d3-eee09c71e460-2:i.c.c.a.r.AbstractProgramRuntimeService@564] - RuntimeInfo removed: program_run:default.TestPipeline47c3f4e6-aa64-4b34-aef9-568d10dcab2d.-SNAPSHOT.workflow.DataPipelineWorkflow.bd986ab4-26ed-11ec-92d3-eee09c71e460
+2021-10-06 21:39:05,919 - DEBUG [provisioning-task-2:i.c.c.i.p.t.ProvisioningTask@125] - Executing DEPROVISION subtask REQUESTING_DELETE for program run program_run:default.TestPipeline47c3f4e6-aa64-4b34-aef9-568d10dcab2d.-SNAPSHOT.workflow.DataPipelineWorkflow.bd986ab4-26ed-11ec-92d3-eee09c71e460.
+2021-10-06 21:39:05,919 - DEBUG [provisioning-task-2:i.c.c.i.p.t.ProvisioningTask@129] - Completed DEPROVISION subtask REQUESTING_DELETE for program run program_run:default.TestPipeline47c3f4e6-aa64-4b34-aef9-568d10dcab2d.-SNAPSHOT.workflow.DataPipelineWorkflow.bd986ab4-26ed-11ec-92d3-eee09c71e460.
+2021-10-06 21:39:05,934 - DEBUG [provisioning-task-3:i.c.c.i.p.t.ProvisioningTask@116] - Completed DEPROVISION task for program run program_run:default.TestPipeline47c3f4e6-aa64-4b34-aef9-568d10dcab2d.-SNAPSHOT.workflow.DataPipelineWorkflow.bd986ab4-26ed-11ec-92d3-eee09c71e460.</div>
 		</li>
 		<li test-id='27' class='node * pass' status='pass'>
 			<div class="step-name" title=""><span class='status pass' title='pass'><i class='material-icons'>check_circle</i></span>AfterActions.tearDown(Scenario)</div>
@@ -457,7 +457,7 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td>Oct 6, 2021 09:27:10 PM</td>
+										<td>Oct 6, 2021 09:37:40 PM</td>
 										<td class='linked' test-id='2'>User is able to Login and confirm data is getting transferred from GCS to BigQuery</td>
 										<td><span class='test-status pass'>pass</span></td>
 									</tr>
@@ -501,19 +501,19 @@
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Oct 6, 2021 09:27:08 PM</div>
+					<div class='panel-lead'>Oct 6, 2021 09:37:38 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Oct 6, 2021 09:28:40 PM</div>
+			 		<div class='panel-lead'>Oct 6, 2021 09:39:10 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>0h 1m 32s+104ms</div>
+					<div class='panel-lead'>0h 1m 31s+776ms</div>
 				</div>
 			</div>
 			<div class='col s6'>
@@ -580,7 +580,7 @@
 		</script>
 		<script>
 			var timeline = {
-			        "Demo1":90.178
+			        "Demo1":90.28
 			};
 		</script>
 	
