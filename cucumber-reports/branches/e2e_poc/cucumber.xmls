@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="1" tests="1" time="1.711403">
-<testcase classname="Demo1" name="User is able to Login and confirm data is getting transferred from GCS to BigQuery" time="1.711403">
+<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="1" tests="1" time="1.323661">
+<testcase classname="Demo1" name="User is able to Login and confirm data is getting transferred from GCS to BigQuery" time="1.323661">
 <skipped><![CDATA[Given Open Datafusion Project to configure pipeline.........................undefined
 When Source is GCS bucket...................................................undefined
 When Target is BigQuery.....................................................undefined
