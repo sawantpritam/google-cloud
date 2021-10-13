@@ -3,11 +3,11 @@
     "line": 1,
     "elements": [
       {
-        "start_timestamp": "2021-10-12T17:08:31.267Z",
+        "start_timestamp": "2021-10-13T19:33:50.677Z",
         "before": [
           {
             "result": {
-              "duration": 1146021100,
+              "duration": 1159004272,
               "status": "passed"
             },
             "match": {
@@ -38,7 +38,7 @@
                   }
                 ],
                 "result": {
-                  "duration": 150099919,
+                  "duration": 139526127,
                   "status": "passed"
                 },
                 "match": {
@@ -58,7 +58,7 @@
             "after": [
               {
                 "result": {
-                  "duration": 16151,
+                  "duration": 13757,
                   "status": "skipped"
                 },
                 "match": {
@@ -78,7 +78,7 @@
             "after": [
               {
                 "result": {
-                  "duration": 9210,
+                  "duration": 8398,
                   "status": "skipped"
                 },
                 "match": {
@@ -98,7 +98,7 @@
             "after": [
               {
                 "result": {
-                  "duration": 8084,
+                  "duration": 8312,
                   "status": "skipped"
                 },
                 "match": {
@@ -118,7 +118,7 @@
             "after": [
               {
                 "result": {
-                  "duration": 7619,
+                  "duration": 8062,
                   "status": "skipped"
                 },
                 "match": {
@@ -138,7 +138,7 @@
             "after": [
               {
                 "result": {
-                  "duration": 7468,
+                  "duration": 7116,
                   "status": "skipped"
                 },
                 "match": {
@@ -158,7 +158,7 @@
             "after": [
               {
                 "result": {
-                  "duration": 7004,
+                  "duration": 7074,
                   "status": "skipped"
                 },
                 "match": {
@@ -178,7 +178,7 @@
             "after": [
               {
                 "result": {
-                  "duration": 7078,
+                  "duration": 9462,
                   "status": "skipped"
                 },
                 "match": {
@@ -198,7 +198,7 @@
             "after": [
               {
                 "result": {
-                  "duration": 8173,
+                  "duration": 10637,
                   "status": "skipped"
                 },
                 "match": {
@@ -218,7 +218,7 @@
             "after": [
               {
                 "result": {
-                  "duration": 14432,
+                  "duration": 9305,
                   "status": "skipped"
                 },
                 "match": {
@@ -238,7 +238,7 @@
             "after": [
               {
                 "result": {
-                  "duration": 10521,
+                  "duration": 8882,
                   "status": "skipped"
                 },
                 "match": {
@@ -258,7 +258,7 @@
             "after": [
               {
                 "result": {
-                  "duration": 7170,
+                  "duration": 7028,
                   "status": "skipped"
                 },
                 "match": {
@@ -278,7 +278,7 @@
             "after": [
               {
                 "result": {
-                  "duration": 12498,
+                  "duration": 6934,
                   "status": "skipped"
                 },
                 "match": {
@@ -298,7 +298,7 @@
             "after": [
               {
                 "result": {
-                  "duration": 11620,
+                  "duration": 6691,
                   "status": "skipped"
                 },
                 "match": {
@@ -318,7 +318,7 @@
             "after": [
               {
                 "result": {
-                  "duration": 10564,
+                  "duration": 6909,
                   "status": "skipped"
                 },
                 "match": {
@@ -338,7 +338,7 @@
             "after": [
               {
                 "result": {
-                  "duration": 10745,
+                  "duration": 6258,
                   "status": "skipped"
                 },
                 "match": {
