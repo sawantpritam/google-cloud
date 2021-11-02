@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite failures="1" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="138.030115">
-<testcase classname="Demo1" name="User is able to Login and confirm data is getting transferred from GCS to BigQuery" time="138.030115">
+<testsuite failures="1" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="138.364281">
+<testcase classname="Demo1" name="User is able to Login and confirm data is getting transferred from GCS to BigQuery" time="138.364281">
 <failure message="java.lang.AssertionError&#10;&#9;at org.junit.Assert.fail(Assert.java:87)&#10;&#9;at org.junit.Assert.assertTrue(Assert.java:42)&#10;&#9;at org.junit.Assert.assertTrue(Assert.java:53)&#10;&#9;at io.cdap.plugin.gcp.stepsdesign.GCSBasicDemo.verifyThePipelineStatusIs(GCSBasicDemo.java:155)&#10;&#9;at ✽.Verify the pipeline status is &quot;Succeeded&quot;(file:src/e2e-test/features/DemoGcs.feature:17)&#10;"><![CDATA[Given Open Datafusion Project to configure pipeline.........................passed
 When Source is GCS bucket...................................................passed
 When Target is BigQuery.....................................................passed
