@@ -182,6 +182,7 @@ public final class BigQueryExecute extends AbstractBigQueryAction {
     private static final String TABLE = "table";
     private static final String NAME_LOCATION = "location";
     public static final String DATASET_PROJECT_ID = "datasetProject";
+    private static final int ERROR_CODE_NOT_FOUND = 404;
 
     @Name(DATASET_PROJECT_ID)
     @Macro
@@ -384,8 +385,13 @@ public final class BigQueryExecute extends AbstractBigQueryAction {
       try {
         bigQuery.create(JobInfo.of(queryJobConfiguration));
       } catch (BigQueryException e) {
-        failureCollector.addFailure(String.format("%s.", e.getMessage()), "Please specify a valid query.")
-          .withConfigProperty(SQL);
+        if (e.getCode() == ERROR_CODE_NOT_FOUND)  {
+          LOG.warn("The query contains a non resource that doesn't exist. Error code {} and message generated {}",
+                  e.getCode(), e.getMessage());
+        } else {
+          failureCollector.addFailure(String.format("%s.", e.getMessage()), "Please specify a valid query.")
+                  .withConfigProperty(SQL);
+        }
       }
     }
 

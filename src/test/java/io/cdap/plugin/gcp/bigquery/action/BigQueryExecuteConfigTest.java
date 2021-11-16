@@ -25,6 +25,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.ArgumentMatchers;
 import org.mockito.internal.util.reflection.FieldSetter;
+import org.mortbay.log.Log;
 
 import static org.powermock.api.mockito.PowerMockito.mock;
 import static org.powermock.api.mockito.PowerMockito.when;
@@ -48,10 +49,28 @@ public class BigQueryExecuteConfigTest {
   }
 
   @Test
+  public void testBigQueryExecuteSQLWithNonExistentResource() throws Exception {
+    String errorMessage = "Not found";
+    BigQueryExecute.Config config = new BigQueryExecute.Config("standard",
+            "select * from dataset.table where id=1",
+            "batch");
+
+    FieldSetter.setField(config, GCPConfig.class.getDeclaredField("project"), "test_project");
+
+    MockFailureCollector failureCollector = new MockFailureCollector();
+    BigQuery bigQuery = mock(BigQuery.class);
+    when(bigQuery.create(ArgumentMatchers.any(JobInfo.class))).thenThrow(new BigQueryException(404, errorMessage));
+
+    config.validateSQLSyntax(failureCollector, bigQuery);
+    Log.warn("size : {}", failureCollector.getValidationFailures().size());
+    Assert.assertEquals(0, failureCollector.getValidationFailures().size());
+  }
+
+  @Test
   public void testBigQueryExecuteInvalidSQL() throws Exception {
     String errorMessage = "Invalid sql";
     BigQueryExecute.Config config = new BigQueryExecute.Config("standard",
-                                                               "selcet * fro$m dataset-table where id=1",
+                                                               "select * fro$m dataset-table where id=1",
                                                                "batch");
 
     FieldSetter.setField(config, GCPConfig.class.getDeclaredField("project"), "test_project");
