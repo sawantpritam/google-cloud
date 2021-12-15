@@ -1,6 +1,31 @@
 Feature: AmazonS3 End to End records transfer
 
   @AmazonS3
+  Scenario:Validate successful records transfer from Amazon to GCS
+    Given Open Datafusion Project to configure pipeline
+    When Source is Amazon
+    When Sink is GCS
+    Then Open Amazon Properties
+    Then Enter the Amazon properties for bucket "amazonPath"
+    Then Capture output schema
+    Then Validate Amazon properties
+    Then Close the Amazon properties
+    Then Enter the GCS properties
+    Then Close the GCS Properties
+    Then Connect Source as "Amazon" and sink as "GCS" to establish connection
+    Then Add pipeline name
+    Then Preview and run the pipeline
+    Then Verify the preview of pipeline is "success"
+    Then Click on PreviewData for Amazon
+    Then Verify Preview output schema matches the outputSchema captured in properties
+    Then Close the Preview and deploy the pipeline
+    Then Run the Pipeline in Runtime
+    Then Wait till pipeline is in running state
+    Then Verify the pipeline status is "Succeeded"
+    Then Open the Logs and capture raw logs
+    Then Validate the output record count
+
+  @AmazonS3
   Scenario:Validate successful records transfer from Amazon to BigQuery using authentication method as IAM
     Given Open Datafusion Project to configure pipeline
     Given Delete the table "amazonBqTableDemo"
@@ -207,27 +232,4 @@ Feature: AmazonS3 End to End records transfer
     Then Open the Logs and capture raw logs
     Then Validate the output record count
 
-  @AmazonS3
-  Scenario:Validate successful records transfer from Amazon to GCS
-    Given Open Datafusion Project to configure pipeline
-    When Source is Amazon
-    When Sink is GCS
-    Then Open Amazon Properties
-    Then Enter the Amazon properties for bucket "amazonPath"
-    Then Capture output schema
-    Then Validate Amazon properties
-    Then Close the Amazon properties
-    Then Enter the GCS properties
-    Then Close the GCS Properties
-    Then Connect Source as "Amazon" and sink as "GCS" to establish connection
-    Then Add pipeline name
-    Then Preview and run the pipeline
-    Then Verify the preview of pipeline is "success"
-    Then Click on PreviewData for Amazon
-    Then Verify Preview output schema matches the outputSchema captured in properties
-    Then Close the Preview and deploy the pipeline
-    Then Run the Pipeline in Runtime
-    Then Wait till pipeline is in running state
-    Then Verify the pipeline status is "Succeeded"
-    Then Open the Logs and capture raw logs
-    Then Validate the output record count
+
