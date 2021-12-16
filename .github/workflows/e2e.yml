@@ -65,6 +65,10 @@ jobs:
         with:
           name: Cucumber report
           path: ./plugin/target/cucumber-reports
+          - name: Amazon Access ID and Access key
+                  env:
+                    AWS_KEY_ID: ${{ secrets.AWS_KEY_ID }}
+                    AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
       - name: Upload debug files 
         uses: actions/upload-artifact@v2.2.4
         if: always()
