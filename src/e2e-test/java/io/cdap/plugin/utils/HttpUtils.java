@@ -42,17 +42,17 @@ public class HttpUtils {
     String url, String method, List<KeyValue> headers, String requestBody, String format)
     throws UnsupportedEncodingException {
     String result = null;
-    HttpRequestBase httpRequest=null;
-    if(method.equalsIgnoreCase("GET")){
+    HttpRequestBase httpRequest = null;
+    if (method.equalsIgnoreCase("GET")) {
       httpRequest = new HttpGet(url);
-    } else if(method.equalsIgnoreCase("POST")){
+    } else if (method.equalsIgnoreCase("POST")) {
       httpRequest = new HttpPost(url);
-      ((HttpPost)httpRequest).setEntity(new StringEntity(requestBody));
+      ((HttpPost) httpRequest).setEntity(new StringEntity(requestBody));
     }
-    for(KeyValue header : headers){
-      httpRequest.addHeader(header.getKey(),header.getValue());
+    for (KeyValue header : headers) {
+      httpRequest.addHeader(header.getKey(), header.getValue());
     }
-    if (format.equalsIgnoreCase("json")){
+    if (format.equalsIgnoreCase("json")) {
       httpRequest.setHeader("Accept", "application/json");
       httpRequest.setHeader("Content-type", "application/json");
     }

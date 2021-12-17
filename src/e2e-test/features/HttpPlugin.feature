@@ -58,7 +58,7 @@ Feature: HTTP Plugin Positive scenarios
     Then Validate successMessage is displayed
     Then Validate OUT record count is equal to IN record count
     Then Get Count of no of records transferred to BigQuery in "httpBqTableName"
-    Then Validate number of records fetched from HTTP request with Url "<Url>" , method "<Method>" , requestBody "<RequestBody>" and jsonResultPath "<ResultPath>" is equal no of records transferred to BigQuery in "httpBqTableName"
+    Then Validate BigQuery records count is equal to HTTP records count with Url "<Url>" "<Method>" "<RequestBody>" "<ResultPath>"
     Examples:
     | Url           |  Method           | Format           | RequestBody          | OutputSchema               |  ResultPath           | FieldsMapping                   |
     | httpSrcUrl_1  |  httpSrcMethod_1  | httpSrcFormat_1  |httpSrcRequestBody_1  | httpSrcValidOutputSchema_1 |  httpSrcResultPath_1  | httpSrcValidJsonFieldsMapping_1 |

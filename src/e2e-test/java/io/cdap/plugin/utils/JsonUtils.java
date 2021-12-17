@@ -20,6 +20,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.apache.log4j.Logger;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,13 +45,13 @@ public class JsonUtils {
     return keyValueList;
   }
 
-  public static int countJsonSize(String json, String node){
+  public static int countJsonSize(String json, String node) {
     int size = 1;
-    JsonObject jsonObject = (JsonObject)new JsonParser().parse(json);
+    JsonObject jsonObject = (JsonObject) new JsonParser().parse(json);
     try {
       JsonArray dataObject = jsonObject.getAsJsonArray(node);
       size = dataObject.size();
-    }catch(Exception e){
+    } catch (Exception e) {
       logger.error("JsonUtils : Error while converting JsonString to jsonArray - " + e);
     }
     return size;

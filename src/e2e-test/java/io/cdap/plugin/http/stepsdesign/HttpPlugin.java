@@ -45,6 +45,7 @@ import stepsdesign.BeforeActions;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -54,8 +55,8 @@ import java.util.UUID;
  * HTTP Plugin steps design.
  */
 public class HttpPlugin implements CdfHelper {
-  GcpClient gcpClient = new GcpClient();
   List<String> propertiesOutputSchema = new ArrayList<String>();
+  int countRecords;
 
   @Given("Open Datafusion Project to configure pipeline")
   public void openDatafusionProjectToConfigurePipeline() throws IOException, InterruptedException {
@@ -122,7 +123,7 @@ public class HttpPlugin implements CdfHelper {
   public void enterTheHTTPPropertiesWithBlankProperty(String property) {
     if (property.equalsIgnoreCase("referenceName")) {
       HttpPluginActions.enterHttpUrl(E2ETestUtils.pluginProp("httpSrcUrl"));
-    }else if (property.equalsIgnoreCase("url")) {
+    } else if (property.equalsIgnoreCase("url")) {
       HttpPluginActions.enterReferenceName(E2ETestUtils.pluginProp("httpSrcReferenceName"));
     }
   }
@@ -241,7 +242,7 @@ public class HttpPlugin implements CdfHelper {
     WebDriverWait wait = new WebDriverWait(SeleniumDriver.getDriver(), 120);
     wait.until(ExpectedConditions.visibilityOf(CdfStudioLocators.statusBanner));
     Assert.assertTrue(CdfStudioLocators.statusBannerText.getText().contains(previewStatus));
-    if(!previewStatus.equalsIgnoreCase("failed")) {
+    if (!previewStatus.equalsIgnoreCase("failed")) {
       wait.until(ExpectedConditions.invisibilityOf(CdfStudioLocators.statusBanner));
     }
   }
@@ -290,21 +291,22 @@ public class HttpPlugin implements CdfHelper {
   @Then("Get Count of no of records transferred to BigQuery in {string}")
   public void getCountOfNoOfRecordsTransferredToBigQueryIn(String tableName)
     throws IOException, InterruptedException {
-    int countRecords = gcpClient.countBqQuery(E2ETestUtils.pluginProp(tableName));
+    countRecords = GcpClient.countBqQuery(E2ETestUtils.pluginProp(tableName));
     BeforeActions.scenario.write("**********No of Records Transferred******************:" + countRecords);
     Assert.assertTrue(countRecords > 0);
   }
 
-  @Then("Validate number of records fetched from HTTP request with Url {string} , method {string} , " +
-    "requestBody {string} and jsonResultPath {string} is equal no of records transferred to BigQuery in {string}")
-  public void validateNumberOfRecordsFetchedFromHTTPRequestWithUrlMethodAndJsonResultPathIsEqualNoOfRecordsTransferredToBigQueryIn(String url, String method, String body,String jsonResultPath, String bqTable) throws IOException, InterruptedException {
-    int countRecords = gcpClient.countBqQuery(E2ETestUtils.pluginProp(bqTable));
-    BeforeActions.scenario.write("**********No of Records Transferred******************:" + countRecords);
-    Optional<String> response = HttpUtils.getHttpResponseBody(E2ETestUtils.pluginProp(url), E2ETestUtils.pluginProp(method), new ArrayList<KeyValue>(), E2ETestUtils.pluginProp(body), "json");
-    if (response.isPresent()){
-      Assert.assertEquals(JsonUtils.countJsonSize(response.get(), E2ETestUtils.pluginProp(jsonResultPath)), countRecords);
-    }else{
-      Assert.assertEquals(0,countRecords);
+
+  @Then("Validate BigQuery records count is equal to HTTP records count with Url {string} {string} {string} {string}")
+  public void validateBigQueryRecordsCountIsEqualToHTTPRecordsCountWithUrl
+    (String url, String method, String body, String resultPath) throws UnsupportedEncodingException {
+    Optional<String> response = HttpUtils
+      .getHttpResponseBody(E2ETestUtils.pluginProp(url), E2ETestUtils.pluginProp(method),
+                           new ArrayList<KeyValue>(), E2ETestUtils.pluginProp(body), "json");
+    if (response.isPresent()) {
+      Assert.assertEquals(JsonUtils.countJsonSize(response.get(), E2ETestUtils.pluginProp(resultPath)), countRecords);
+    } else {
+      Assert.assertEquals(0, countRecords);
     }
   }
 
