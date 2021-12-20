@@ -41,8 +41,8 @@ public class E2ETestUtils {
   static {
 
     try {
-      pluginProperties.load(new FileInputStream("src/e2e-test/resources/pluginParameters.properties"));
-      errorProperties.load(new FileInputStream("src/e2e-test/resources/errorMessage.properties"));
+      pluginProperties.load(E2ETestUtils.class.getResourceAsStream("/pluginParameters.properties"));
+      errorProperties.load(E2ETestUtils.class.getResourceAsStream("/errorMessage.properties"));
     } catch (IOException e) {
       logger.error("Error while reading properties file" + e);
     }

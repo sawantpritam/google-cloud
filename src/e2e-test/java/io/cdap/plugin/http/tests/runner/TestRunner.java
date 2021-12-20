@@ -18,7 +18,6 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 
-
 /**
  * Test Runner to execute cases.
  */
@@ -26,7 +25,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = {"src/e2e-test/features"},
         glue = {"io.cdap.plugin.http.stepsdesign", "stepsdesign"},
-        tags = {"@HTTP-TC1"},
+        tags = {"@HTTP-TC"},
         monochrome = true,
         plugin = {"pretty", "html:target/cucumber-html-report", "json:target/cucumber-reports/cucumber.json",
           "junit:target/cucumber-reports/cucumber.xml"}

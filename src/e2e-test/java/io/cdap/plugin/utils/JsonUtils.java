@@ -45,17 +45,23 @@ public class JsonUtils {
     return keyValueList;
   }
 
-  public static int countJsonSize(String json, String node) {
-    int size = 1;
+  public static int countJsonNodeSize(String json, String node) {
+    int size = 0;
     JsonObject jsonObject = (JsonObject) new JsonParser().parse(json);
     try {
       JsonArray dataObject = jsonObject.getAsJsonArray(node);
       size = dataObject.size();
-    } catch (Exception e) {
+    } catch (ClassCastException e) {
       logger.error("JsonUtils : Error while converting JsonString to jsonArray - " + e);
+      try {
+        jsonObject.getAsJsonObject(node);
+        size = 1;
+      } catch (ClassCastException exception) {
+        logger.error("JsonUtils : Error while converting JsonString to jsonObject - " + e);
+      }
+    } catch (Exception e) {
+      logger.error("JsonUtils : Error while calculating json node size - " + e);
     }
     return size;
   }
-
 }
-

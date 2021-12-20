@@ -44,7 +44,6 @@ import stepsdesign.BeforeActions;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -115,8 +114,8 @@ public class HttpPlugin implements CdfHelper {
 
   @Then("Enter basic authentication username and password")
   public void enterBasicAuthenticationUsernameAndPassword() {
-    HttpPluginActions.enterBasicAuthUserName("");
-    HttpPluginActions.enterBasicAuthPassword("");
+    HttpPluginActions.enterBasicAuthUserName(System.getenv("HTTP_BASIC_USERNAME"));
+    HttpPluginActions.enterBasicAuthPassword(System.getenv("HTTP_BASIC_PASSWORD"));
   }
 
   @Then("Enter the HTTP Properties with blank property {string}")
@@ -206,7 +205,6 @@ public class HttpPlugin implements CdfHelper {
     CdfStudioActions.clickProperties("BigQuery");
     CdfBigQueryPropertiesActions.enterProjectId(E2ETestUtils.pluginProp("projectId"));
     CdfBigQueryPropertiesActions.enterDatasetProjectId(E2ETestUtils.pluginProp("projectId"));
-
     CdfBigQueryPropertiesActions.enterBigQueryReferenceName("BQ_Ref_" + UUID.randomUUID().toString());
     CdfBigQueryPropertiesActions.enterBigQueryDataset(E2ETestUtils.pluginProp("dataset"));
     CdfBigQueryPropertiesActions.enterBigQueryTable(E2ETestUtils.pluginProp(tableName));
@@ -272,10 +270,6 @@ public class HttpPlugin implements CdfHelper {
   @Then("Open Logs")
   public void openLogs() throws FileNotFoundException, InterruptedException {
     CdfPipelineRunAction.logsClick();
-    BeforeActions.scenario.write(CdfPipelineRunAction.captureRawLogs());
-    PrintWriter out = new PrintWriter(BeforeActions.myObj);
-    out.println(CdfPipelineRunAction.captureRawLogs());
-    out.close();
   }
 
   @Then("Verify the pipeline status is {string}")
@@ -296,7 +290,6 @@ public class HttpPlugin implements CdfHelper {
     Assert.assertTrue(countRecords > 0);
   }
 
-
   @Then("Validate BigQuery records count is equal to HTTP records count with Url {string} {string} {string} {string}")
   public void validateBigQueryRecordsCountIsEqualToHTTPRecordsCountWithUrl
     (String url, String method, String body, String resultPath) throws UnsupportedEncodingException {
@@ -304,7 +297,8 @@ public class HttpPlugin implements CdfHelper {
       .getHttpResponseBody(E2ETestUtils.pluginProp(url), E2ETestUtils.pluginProp(method),
                            new ArrayList<KeyValue>(), E2ETestUtils.pluginProp(body), "json");
     if (response.isPresent()) {
-      Assert.assertEquals(JsonUtils.countJsonSize(response.get(), E2ETestUtils.pluginProp(resultPath)), countRecords);
+      Assert.assertEquals(JsonUtils.countJsonNodeSize(response.get(), E2ETestUtils.pluginProp(resultPath))
+        , countRecords);
     } else {
       Assert.assertEquals(0, countRecords);
     }
@@ -320,7 +314,6 @@ public class HttpPlugin implements CdfHelper {
     CdfGcsActions.gcsProperties();
     CdfGcsActions.enterReferenceName();
     CdfGcsActions.enterProjectId();
-
     CdfGcsActions.getGcsBucket(E2ETestUtils.pluginProp(bucket));
     CdfGcsActions.selectFormat("csv");
     CdfGcsActions.skipHeader();
@@ -355,12 +348,6 @@ public class HttpPlugin implements CdfHelper {
 
   @Then("Capture output schema")
   public void captureOutputSchema() {
-    //Click validate button
-    SeleniumDriver.getDriver().findElement(By.xpath("//button[@data-cy='plugin-properties-validate-btn']")).click();
-    //wait for No errors found message
-    SeleniumHelper.waitElementIsVisible(SeleniumDriver.getDriver().findElement(
-      By.xpath("//*[@data-cy='plugin-validation-success-msg']")), 10L);
-    //wait for schema load to complete
     SeleniumHelper.waitElementIsVisible(SeleniumDriver.getDriver().findElement(
       By.xpath("//div[@data-cy='schema-fields-list']//*[@placeholder='Field name']")), 10L);
     List<WebElement> propertiesOutputSchemaElements = SeleniumDriver.getDriver().findElements(

@@ -60,7 +60,7 @@ Feature: HTTP Plugin Error scenarios
     Then Enter outputSchema "httpSrcInvalidOutputSchema" , jsonResultPath "httpSrcResultPath" and jsonFieldsMapping "httpSrcValidJsonFieldsMapping"
     Then Validate HTTP properties
     Then Close the HTTP Properties
-    Then Enter the BigQuery Properties for table "httpBqTableName"
+    Then Enter the BigQuery Sink Properties for table "httpBqTableName"
     Then Close the BigQuery Properties
     Then Save the pipeline
     Then Preview and run the pipeline
@@ -77,7 +77,7 @@ Feature: HTTP Plugin Error scenarios
     Then Enter outputSchema "httpSrcValidOutputSchema" , jsonResultPath "httpSrcIncorrectResultPath" and jsonFieldsMapping "httpSrcValidJsonFieldsMapping"
     Then Validate HTTP properties
     Then Close the HTTP Properties
-    Then Enter the BigQuery Properties for table "httpBqTableName"
+    Then Enter the BigQuery Sink Properties for table "httpBqTableName"
     Then Close the BigQuery Properties
     Then Save the pipeline
     Then Preview and run the pipeline
@@ -94,7 +94,7 @@ Feature: HTTP Plugin Error scenarios
     Then Enter outputSchema "httpSrcValidOutputSchema" , jsonResultPath "httpSrcResultPath" and jsonFieldsMapping "httpSrcValidJsonFieldsMapping"
     Then Validate HTTP properties
     Then Close the HTTP Properties
-    Then Enter the BigQuery Properties for table "httpBqTableName"
+    Then Enter the BigQuery Sink Properties for table "httpBqTableName"
     Then Close the BigQuery Properties
     Then Save the pipeline
     Then Preview and run the pipeline
@@ -111,22 +111,3 @@ Feature: HTTP Plugin Error scenarios
       | property        |
       | referenceName   |
       | url             |
-
-#  @HTTP-TC
-#  Scenario: TC-HTTP-09:User is able to Login and confirm data is getting transferred from GCS to HTTP
-#    Given Open Datafusion Project to configure pipeline
-#    When Source is GCS bucket
-#    When Target is HTTP
-#    Then Link Source GCS and Sink HTTP to establish connection
-#    Then Enter the GCS Properties with "httpGSCBucket" GCS bucket
-#    Then Close the GCS Properties
-#    Then Open HTTP Properties
-#    Then Enter the HTTP Sink Properties
-#    Then Close the HTTP Properties
-#    Then Save and Deploy Pipeline
-#    Then Run the Pipeline in Runtime
-#    Then Wait till pipeline is in running state
-#    Then Verify the pipeline status is "Succeeded"
-
-
-

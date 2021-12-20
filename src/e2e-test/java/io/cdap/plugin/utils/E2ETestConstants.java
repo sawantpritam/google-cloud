@@ -25,4 +25,3 @@ public class E2ETestConstants {
   public static final String ERROR_MSG_ERROR_FOUND_VALIDATION = "errorMessageErrorFoundValidation";
   public static final String ERROR_MSG_HTTP_OAUTH_VALIDATION = "errorMessageHttpOAuthValidation";
 }
-
