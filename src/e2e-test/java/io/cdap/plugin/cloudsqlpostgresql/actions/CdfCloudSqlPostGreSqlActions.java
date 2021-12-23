@@ -16,10 +16,18 @@
 package io.cdap.plugin.cloudsqlpostgresql.actions;
 
 import io.cdap.e2e.pages.locators.CdfBigQueryPropertiesLocators;
+import io.cdap.e2e.pages.locators.CdfStudioLocators;
+import io.cdap.e2e.utils.SeleniumDriver;
 import io.cdap.e2e.utils.SeleniumHelper;
 import io.cdap.plugin.cloudsqlpostgresql.locators.CdfCloudSqlPostGreSqlLocators;
+import io.cdap.plugin.utils.CdapUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WindowType;
 
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.Set;
 
 /**
  * cloudSqlPostGreSql connector related Step Actions.
@@ -113,4 +121,18 @@ public class CdfCloudSqlPostGreSqlActions {
     public static void clickPrivateInstance() {
         CdfCloudSqlPostGreSqlLocators.instanceType.click();
     }
-}
+
+    public static void getSchema() {
+        CdfCloudSqlPostGreSqlLocators.getSchemaButton.click();
+    }
+
+    public static void clickPreviewData() {
+        SeleniumHelper.waitElementIsVisible(CdfCloudSqlPostGreSqlLocators.previewData);
+        CdfCloudSqlPostGreSqlLocators.previewData.click();
+    }
+
+    public static void replaceSplitValue(String numberOfSplits) throws IOException {
+        SeleniumHelper.replaceElementValue(CdfCloudSqlPostGreSqlLocators.numberOfSplits, numberOfSplits);
+        }
+    }
+
