@@ -53,7 +53,7 @@ Feature: GCS source - Verify GCS Source plugin error scenarios
     Then Enter GCS property projectId and reference name
     Then Enter GCS source property path "gcsOutputFieldTestFile"
     Then Select GCS property format "csv"
-    Then Enter GCS source property override field "gcsInvalidOverrideField" and data type "gcsOverrideDataType"
+    Then Enter GCS source property override field "gcsInvalidOverrideField" and data type "gcsOverrideFloatDataType"
     Then Toggle GCS source property skip header to true
     Then Verify get schema fails with error
 

@@ -29,10 +29,16 @@ import org.junit.Assert;
 import stepsdesign.BeforeActions;
 import stepsdesign.PipelineSteps;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 /**
  * GCP test hooks.
@@ -76,7 +82,9 @@ public class TestSetupHooks {
   }
 
   @After(order = 1, value = "@GCS_CSV_TEST or @GCS_TSV_TEST or @GCS_BLOB_TEST " +
-    "or @GCS_DELIMITED_TEST or @GCS_TEXT_TEST or @GCS_OUTPUT_FIELD_TEST")
+    "or @GCS_DELIMITED_TEST or @GCS_TEXT_TEST or @GCS_OUTPUT_FIELD_TEST or @GCS_DATATYPE_1_TEST or " +
+    "@GCS_DATATYPE_2_TEST " +
+    "or @GCS_READ_RECURSIVE_TEST or @GCS_PARQUET_TEST or @GCS_AVRO_TEST")
   public static void deleteSourceBucketWithFile() {
     deleteGCSBucket(gcsSourceBucketName);
     gcsSourceBucketName = StringUtils.EMPTY;
@@ -214,5 +222,54 @@ public class TestSetupHooks {
         Assert.fail(e.getMessage());
       }
     }
+  }
+
+  /**
+   * Create GCS bucket with csv file containing below data types:
+   * int, float, string, double, long, timestamp, date, boolean, null, bytes.
+   */
+  @Before(order = 1, value = "@GCS_DATATYPE_1_TEST")
+  public static void createBucketWithDataTypeTest1File() throws IOException, URISyntaxException {
+    gcsSourceBucketName = createGCSBucketWithFile(PluginPropertyUtils.pluginProp("gcsDataTypeTest1File"));
+  }
+
+  /**
+   * Create GCS bucket with csv file containing below data types:
+   * float with special cases NAN, INF and decimal.
+   */
+  @Before(order = 1, value = "@GCS_DATATYPE_2_TEST")
+  public static void createBucketWithDataTypeTest2File() throws IOException, URISyntaxException {
+    gcsSourceBucketName = createGCSBucketWithFile(PluginPropertyUtils.pluginProp("gcsDataTypeTest2File"));
+  }
+
+  @Before(order = 1, value = "@GCS_READ_RECURSIVE_TEST")
+  public static void createBucketWithRecursiveTestFiles() throws IOException, URISyntaxException {
+    gcsSourceBucketName = createGCSBucketWithMultipleFiles(PluginPropertyUtils.pluginProp("gcsReadRecursivePath"));
+  }
+
+  @Before(order = 1, value = "@GCS_PARQUET_TEST")
+  public static void createBucketWithParquetTestFile() throws IOException, URISyntaxException {
+    gcsSourceBucketName = createGCSBucketWithFile(PluginPropertyUtils.pluginProp("gcsParquetFile"));
+  }
+
+  @Before(order = 1, value = "@GCS_AVRO_TEST")
+  public static void createBucketWithAvroTestFile() throws IOException, URISyntaxException {
+    gcsSourceBucketName = createGCSBucketWithFile(PluginPropertyUtils.pluginProp("gcsAvroFile"));
+  }
+
+  private static String createGCSBucketWithMultipleFiles(String folderPath) throws IOException, URISyntaxException {
+    List<File> files = Files.list(Paths.get(StorageClient.class.getResource("/" + folderPath).toURI()))
+      .filter(Files::isRegularFile)
+      .map(Path::toFile)
+      .collect(Collectors.toList());
+
+    String bucketName = StorageClient.createBucket("cdf-e2e-test-" + UUID.randomUUID()).getName();
+    for (File file : files) {
+      String filePath = folderPath + "/" + file.getName();
+      StorageClient.uploadObject(bucketName, filePath, filePath);
+    }
+    BeforeActions.scenario.write("Created GCS Bucket " + bucketName + " containing "
+                                   + files.size() + " files in " + folderPath);
+    return bucketName;
   }
 }
