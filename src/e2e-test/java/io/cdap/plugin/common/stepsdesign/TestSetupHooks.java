@@ -27,12 +27,17 @@ import io.cucumber.java.Before;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 import stepsdesign.BeforeActions;
-import stepsdesign.PipelineSteps;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 /**
  * GCP test hooks.
@@ -75,8 +80,13 @@ public class TestSetupHooks {
     gcsSourceBucketName = createGCSBucketWithFile(PluginPropertyUtils.pluginProp("gcsOutputFieldTestFile"));
   }
 
+  @Before(order = 1, value = "@GCS_READ_RECURSIVE_TEST")
+  public static void createBucketWithRecursiveTestFiles() throws IOException, URISyntaxException {
+    gcsSourceBucketName = createGCSBucketWithMultipleFiles(PluginPropertyUtils.pluginProp("gcsReadRecursivePath"));
+  }
+
   @After(order = 1, value = "@GCS_CSV_TEST or @GCS_TSV_TEST or @GCS_BLOB_TEST " +
-    "or @GCS_DELIMITED_TEST or @GCS_TEXT_TEST or @GCS_OUTPUT_FIELD_TEST")
+    "or @GCS_DELIMITED_TEST or @GCS_TEXT_TEST or @GCS_OUTPUT_FIELD_TEST or @GCS_READ_RECURSIVE_TEST")
   public static void deleteSourceBucketWithFile() {
     deleteGCSBucket(gcsSourceBucketName);
     gcsSourceBucketName = StringUtils.EMPTY;
@@ -88,7 +98,13 @@ public class TestSetupHooks {
     BeforeActions.scenario.write("GCS target bucket name - " + gcsTargetBucketName);
   }
 
-  @After(order = 1, value = "@GCS_SINK_TEST")
+  @Before(order = 1, value = "@GCS_SINK_EXISTING_BUCKET_TEST")
+  public static void createTargetGCSBucketWithCSVFile() throws IOException, URISyntaxException {
+    gcsTargetBucketName = createGCSBucketWithFile(PluginPropertyUtils.pluginProp("gcsCsvFile"));
+    BeforeActions.scenario.write("GCS target bucket name - " + gcsTargetBucketName);
+  }
+
+  @After(order = 1, value = "@GCS_SINK_TEST or @GCS_SINK_EXISTING_BUCKET_TEST")
   public static void deleteTargetBucketWithFile() {
     deleteGCSBucket(gcsTargetBucketName);
     gcsTargetBucketName = StringUtils.EMPTY;
@@ -193,6 +209,22 @@ public class TestSetupHooks {
         Assert.fail(e.getMessage());
       }
     }
+  }
+
+  private static String createGCSBucketWithMultipleFiles(String folderPath) throws IOException, URISyntaxException {
+    List<File> files = Files.list(Paths.get(StorageClient.class.getResource("/" + folderPath).toURI()))
+      .filter(Files::isRegularFile)
+      .map(Path::toFile)
+      .collect(Collectors.toList());
+
+    String bucketName = StorageClient.createBucket("cdf-e2e-test-" + UUID.randomUUID()).getName();
+    for (File file : files) {
+      String filePath = folderPath + "/" + file.getName();
+      StorageClient.uploadObject(bucketName, filePath, filePath);
+    }
+    BeforeActions.scenario.write("Created GCS Bucket " + bucketName + " containing "
+                                   + files.size() + " files in " + folderPath);
+    return bucketName;
   }
 
   @Before(order = 1, value = "@PUBSUB_SINK_TEST")
