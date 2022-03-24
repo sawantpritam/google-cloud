@@ -29,10 +29,7 @@ import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.StorageOptions;
 import com.sap.conn.jco.JCoException;
-import io.cdap.e2e.utils.CdfHelper;
-import io.cdap.e2e.utils.BigQueryClient;
-import io.cdap.e2e.utils.SeleniumDriver;
-import io.cdap.e2e.utils.SeleniumHelper;
+import io.cdap.e2e.utils.*;
 import io.cdap.plugin.slt.actions.SLTActions;
 import io.cdap.plugin.slt.locators.SLTLocators;
 import io.cdap.plugin.slt.utils.CDAPUtils;
@@ -55,7 +52,7 @@ import static io.cdap.e2e.utils.BigQueryClient.getSoleQueryResult;
 /**
  * SLT Step definitions
  */
-public class DesignTimeSLT implements CdfHelper {
+public class StepDefinitionSLT implements CdfHelper {
 
     private static final Logger logger = Logger.getLogger(CDAPUtils.class);
     private SAPProperties sapProps;
@@ -79,6 +76,10 @@ public class DesignTimeSLT implements CdfHelper {
     private static String guid = null;
     static boolean errorExist = false;
     static String color;
+    private static AssertionHelper assertionHelper = new AssertionHelper();
+    private static ElementHelper elementHelper = new ElementHelper();
+    private static WaitHelper waitHelper = new WaitHelper();
+
 
 
     static {
@@ -104,7 +105,8 @@ public class DesignTimeSLT implements CdfHelper {
 
     @Given("^Open CDF replication and initiate pipeline creation")
     public void open_cdf_replication() throws IOException, InterruptedException {
-        openCdf("http://localhost:11011/cdap/ns/default/replication/create");
+        openCdf();
+        CDFDriver.get("http://localhost:11011/cdap/ns/default/replication/create");
         sltActions.name_fill(UUID.randomUUID().toString().replaceAll("-", ""));
         sltActions.next_click();
         isErrorPresent = false;
@@ -132,17 +134,15 @@ public class DesignTimeSLT implements CdfHelper {
         sltActions.sltplugin_click();
     }
 
-
     @Then("^User is able to set SLT parameter (.+) as (.+) and getting row (.+) for wrong input$")
     public void userIsAbleToSetSLTParameterAsAndGettingRowForWrongInput(
             String inputParameter, String inputValue, String errorMessage) {
         errorExist = false;
-        io.cdap.plugin.slt.utils.CDAPUtils.clearField(SLTLocators.inputParameter(inputParameter));
-        SLTLocators.inputParameter(inputParameter).sendKeys(inputValue);
+        elementHelper.replaceElementValue(sltLocators.inputParameter(inputParameter), inputValue);
         sltActions.next_click();
-        errorExist = io.cdap.plugin.slt.utils.CDAPUtils.getErrorProp(errorMessage).
+        errorExist = CDAPUtils.getErrorProp(errorMessage).
                 toLowerCase().contains(SLTLocators.rowError.getText().toLowerCase());
-        color = SLTLocators.rowError.getCssValue("border-color");
+        color = sltActions.rowError_color();
         Assert.assertTrue(errorExist);
         BeforeActions.scenario.write("Color of the text box" + color);
         Assert.assertTrue(color.toLowerCase().contains("rgb(209, 86, 104)"));
@@ -151,24 +151,21 @@ public class DesignTimeSLT implements CdfHelper {
     @Then("^User is able to set SLT parameter \"([^\"]*)\" as \"([^\"]*)\"$")
     public void userIsAbleToSetSLTParameter(
             String inputParameter, String inputValue) {
-        io.cdap.plugin.slt.utils.CDAPUtils.clearField(SLTLocators.inputParameter(inputParameter));
-        SLTLocators.inputParameter(inputParameter).sendKeys(inputValue);
+        elementHelper.replaceElementValue(sltLocators.inputParameter(inputParameter), inputValue);
     }
 
     @Then("^Replicate Existing Data is set to false$")
     public void replicate_existing_data() {
         sltActions.replicateExistingDataClick();
-        Assert.assertEquals(
-                sltActions.replicateExistingDataGetText().toLowerCase(),
-                "no");
+        assertionHelper.verifyElementContainsText(sltLocators.replicateExistingData,
+                "No");
     }
 
     @Then("^Suspend Slt Job is set to true$")
     public void suspend_existing_job() {
         sltActions.suspendSltJobClick();
-        Assert.assertEquals(
-                sltActions.suspendSltJobGetText().toLowerCase(),
-                "yes");
+        assertionHelper.verifyElementContainsText(sltLocators.suspendSltJob,
+                "Yes");
     }
 
     @Then("^Click on next$")
@@ -183,7 +180,7 @@ public class DesignTimeSLT implements CdfHelper {
 
     @Then("^Enter the BigQuery Properties for slt datasource$")
     public void enter_the_bigquery_properties_for_slt_datasource_something() throws IOException {
-        SeleniumHelper.replaceElementValue(sltLocators.project,
+        elementHelper.replaceElementValue(sltLocators.project,
                 CDAPUtils.getPluginProp("bqProjectId"));
         sltActions.datasetName_fill(CDAPUtils.getPluginProp("dataset"));
     }
@@ -195,15 +192,14 @@ public class DesignTimeSLT implements CdfHelper {
 
     @Then("^Run the slt Pipeline in Runtime$")
     public void run_the_slt_pipeline_in_runtime() throws Throwable {
-    Thread.sleep(3000);
         sltActions.startPipeline();
-        SeleniumHelper.waitElementIsVisible(sltLocators.running, 60);
+        waitHelper.waitForElementToBeDisplayed(sltLocators.running, 60);
     }
 
     @Then("^Open Logs of SLT Pipeline$")
     public void open_logs_of_slt_pipeline() {
-    sltLocators.logs.click();
-      parent = SeleniumDriver.getDriver().getWindowHandle();
+        sltLocators.logs.click();
+        parent = SeleniumDriver.getDriver().getWindowHandle();
         tabs = new ArrayList(SeleniumDriver.getDriver().getWindowHandles());
         CDFDriver.switchTo().window((String)  tabs.get(tabs.indexOf(parent) + 1));
         sltLocators.advancedLogs.click();
@@ -229,7 +225,6 @@ public class DesignTimeSLT implements CdfHelper {
 
         bqRecordCount = (Integer) getSoleQueryResult(selectQuery).
                 map(Integer::parseInt).orElse(0);
-        System.out.println("Count : " + bqRecordCount);
     }
 
     @Then("^Drop target BigQuery table \"([^\"]*)\"$")
@@ -306,62 +301,52 @@ public class DesignTimeSLT implements CdfHelper {
         Map opProps = new HashMap<>();
         opProps.put("RFC", "ZRFM_LTRC_OPERATIONS");
         try {
-
             ObjectMapper mapper = new ObjectMapper();
             ObjectNode objectNode = mapper.createObjectNode();
             objectNode.put("IM_MTID", mtId);
             objectNode.put("IM_TABLES", table.toUpperCase());
             objectNode.put(action, "X");
-
             JsonNode response = sapAdapterImpl.executeRFC(objectNode.toString(), opProps, "", "");
             BeforeActions.scenario.write("LTRC_OPERATIONS RFM response :-" + response);
             Assert.assertTrue(response.toString().contains("\"MESSAGE_TYPE\":\"S\""));
         } catch (Exception e) {
             throw SystemException.throwException(e.getMessage(), e);
         }
-        Thread.sleep(6000); //sleep required to wait for SAP record creation
+        Thread.sleep(10000); //sleep required to wait for async operation to be executed on SAP
     }
 
     @When("^User fetches the record count of table : \"([^\"]*)\" from SAP$")
     public void user_fetches_the_record_count_of_table_something_from_sap(String table)
             throws JCoException {
-
         sapProps = SAPProperties.getDefault(connection);
         errorCapture = new ErrorCapture(exceptionUtils);
         sapAdapterImpl = new SAPAdapterImpl(errorCapture, connection);
-
-
-    Map opProps = new HashMap<>();
-    opProps.put("RFC", "ZFM_TABLE_COUNT");
-    opProps.put("autoCommit", "true");
-    try {
-      ObjectMapper mapper = new ObjectMapper();
-      ObjectNode objectNode = mapper.createObjectNode();
-      objectNode.put("IM_TABLE", table.toUpperCase());
-      JsonNode response = sapAdapterImpl.executeRFC(objectNode.toString(), opProps, "", "");
-      sapRecordsCount = Integer.parseInt(response.get("EX_COUNT").toString().replaceAll("\"", ""));
-      BeforeActions.scenario.write("Total record count : " + sapRecordsCount);
-
-    } catch (Exception e) {
-      throw SystemException.throwException(e.getMessage(), e);
-    }
+        Map opProps = new HashMap<>();
+        opProps.put("RFC", "ZFM_TABLE_COUNT");
+        opProps.put("autoCommit", "true");
+        try {
+          ObjectMapper mapper = new ObjectMapper();
+          ObjectNode objectNode = mapper.createObjectNode();
+          objectNode.put("IM_TABLE", table.toUpperCase());
+          JsonNode response = sapAdapterImpl.executeRFC(objectNode.toString(), opProps, "", "");
+          sapRecordsCount = Integer.parseInt(response.get("EX_COUNT").toString().replaceAll("\"", ""));
+          BeforeActions.scenario.write("Total record count : " + sapRecordsCount);
+        } catch (Exception e) {
+          throw SystemException.throwException(e.getMessage(), e);
+        }
     }
 
-    @When("^User crates new MTID on \"([^\"]*)\" SAP$")
+    @Given("^User crates new MTID on \"([^\"]*)\" SAP$")
     public void user_creates_mtid_on_sap(String mtIdDes)
             throws JCoException, InterruptedException {
-
         if (mtId == null) {
             sapProps = SAPProperties.getDefault(connection);
             errorCapture = new ErrorCapture(exceptionUtils);
             sapAdapterImpl = new SAPAdapterImpl(errorCapture, connection);
-
-
             Map opProps = new HashMap<>();
             opProps.put("RFC", "ZRFM_IUUC_CREATE_CONFIG");
             opProps.put("autoCommit", "true");
             try {
-
                 ObjectMapper mapper = new ObjectMapper();
                 ObjectNode objectNode = mapper.createObjectNode();
                 objectNode.put("IV_SCHEMA_NAME", mtIdDes);
@@ -379,30 +364,23 @@ public class DesignTimeSLT implements CdfHelper {
                 objectNode.put("IV_REUSE_SENDER", "X");
                 objectNode.put("IV_IL_SCENARIOIV_IL_SCENARIO", "1");
                 objectNode.put("IV_NUM_JOBS_ACPCALC", "000");
-
                 JsonNode response = sapAdapterImpl.executeRFC(objectNode.toString(), opProps, "", "");
                 mtId = response.get("EV_MT_ID").asText();
                 guid = response.get("EV_CONFIG_GUID").asText();
                 System.out.println("MT id : " + mtId + " guid : " + guid);
-                //TODO
-                //BeforeActions.scenario.write("No of records :-" + noOfRecords + Arrays.toString(fields.toArray()));
-
-
             } catch (Exception e) {
                 throw SystemException.throwException(e.getMessage(), e);
             }
-            Thread.sleep(6000); //sleep required to wait for SAP record creation
+            Thread.sleep(6000); //sleep required to wait for async operation to be executed on SAP
         }
     }
 
     @When("^User updates mtid config in CDF_R_SLT_SETTINGS program$")
     public void user_updates_mtid_in_program()
             throws JCoException, InterruptedException {
-
         sapProps = SAPProperties.getDefault(connection);
         errorCapture = new ErrorCapture(exceptionUtils);
         sapAdapterImpl = new SAPAdapterImpl(errorCapture, connection);
-
         Map opProps = new HashMap<>();
         opProps.put("RFC", "ZRFM_LTRC_ADVANCE_SETTINGS_1");
         opProps.put("autoCommit", "true");
@@ -418,16 +396,13 @@ public class DesignTimeSLT implements CdfHelper {
                     CDAPUtils.getPluginProp("gcsDataPath").
                             replaceAll("gs://" , ""));
             objectNode.put("IM_IS_SET_ACT" , "X");
-//            objectNode.put("IM_CUST_NAMES","X");
-
             JsonNode response = sapAdapterImpl.executeRFC(objectNode.toString(), opProps, "", "");
             BeforeActions.scenario.write("LTRC_ADVANCE_SETTINGS RFM Response : " + response);
-
 
         } catch (Exception e) {
             throw SystemException.throwException(e.getMessage(), e);
         }
-        Thread.sleep(10000); //sleep required to wait for SAP record creation
+        Thread.sleep(10000); //sleep required to wait for async operation to be executed on SAP
     }
 
     @When("^User deletes the mtid$")
@@ -449,12 +424,9 @@ public class DesignTimeSLT implements CdfHelper {
             objectNode.put("IV_CONFIG_GUID" , guid);
             JsonNode response = sapAdapterImpl.executeRFC(objectNode.toString(), opProps, "", "");
             BeforeActions.scenario.write("MTID DELETE CONFIG RFM Response : " + response);
-
-
         } catch (Exception e) {
             throw SystemException.throwException(e.getMessage(), e);
         }
-        Thread.sleep(6000); //sleep required to wait for SAP record creation
     }
 
     @Then("{string} the {string} records with {string} in the sap table")
@@ -490,7 +462,6 @@ public class DesignTimeSLT implements CdfHelper {
         if (fieldName.hasNext()) {
           fields.add(object.get(fieldName.next()).asText());
         }
-        Thread.sleep(1000);
       }
       BeforeActions.scenario.write("No of records :-" + noOfRecords + Arrays.toString(fields.toArray()));
     } catch (Exception e) {

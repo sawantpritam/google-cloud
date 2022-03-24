@@ -65,6 +65,10 @@ public class SLTActions {
         elementHelper.clickOnElement(sltLocators.sltplugin);
     }
 
+    public String rowError_color() {
+        return elementHelper.getElementCssProperty(SLTLocators.rowError, "border-color");
+    }
+
     public void next_click() {
         elementHelper.clickOnElement(sltLocators.next);
     }

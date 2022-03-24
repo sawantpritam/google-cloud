@@ -15,12 +15,12 @@ Feature:Run-Time SLT Scenario
 
   @SLT @Run-Time @Sanity
   Scenario: User is able to create MTID and update CDF_R_SLT_SETTINGS program
-    When User crates new MTID on "Automation" SAP
+    Given User crates new MTID on "Automation" SAP
     When User updates mtid config in CDF_R_SLT_SETTINGS program
 
   @SLT @Run-Time @Sanity
   Scenario Outline: User configured SLT job for table containing all data types
-    When User crates new MTID on "Automation" SAP
+    Given User crates new MTID on "Automation" SAP
     When User updates mtid config in CDF_R_SLT_SETTINGS program
     Then Update mass transfer id table: "<table>" job mode to "stop_load"
     Given Open CDF replication and initiate pipeline creation
@@ -49,7 +49,7 @@ Feature:Run-Time SLT Scenario
 
     @SLT @Run-Time @Sanity
     Scenario Outline: User configured SLT job in LTRC and executes pipeline in Initial Load Mode
-    When User crates new MTID on "Automation" SAP
+    Given User crates new MTID on "Automation" SAP
     When User updates mtid config in CDF_R_SLT_SETTINGS program
     Then Update mass transfer id table: "<table>" job mode to "stop_load"
     Given Open CDF replication and initiate pipeline creation
@@ -79,12 +79,11 @@ Feature:Run-Time SLT Scenario
       | t006a   | initial_load    |
       | t023t   | initial_load    |
       | t023    | initial_load    |
-#      | vbap    | initial_load    |
 
 
   @SLT @Run-Time
     Scenario Outline: User configured SLT job in LTRC and executes pipeline in Replication
-    When User crates new MTID on "Automation" SAP
+    Given User crates new MTID on "Automation" SAP
     When User updates mtid config in CDF_R_SLT_SETTINGS program
     Then Update mass transfer id table: "<table>" job mode to "stop_load"
     Given Open CDF replication and initiate pipeline creation
@@ -109,7 +108,6 @@ Feature:Run-Time SLT Scenario
     Then "<cud_type>" the "<count>" records with "<rfc>" in the sap table
     Then Wait till SLT pipeline is in running state and no error occurs
     Then Close logs and stop the pipeline
-    #    Then Update mass transfer id table: "<table>" job mode to "stop_load"
     Then Get Count of no of records transferred from SLT to BigQuery in "<table>"
     Then User is able to validate record count in BQ matches with count in SAP
     Then "<cud_type>" the "<count>" records with "<rfc>" in the sap table
@@ -124,11 +122,10 @@ Feature:Run-Time SLT Scenario
     Examples:
     | table   | mode            | count | cud_type| rfc             |
     | mara    | replication     | 1     | create  | rfc_matnr       |
-#    | EKKO    | replication     | 5     | create  | rfc_2LIS_02_HDR |
 
   @SLT @Run-Time
   Scenario Outline: User is able to verify only replication data transfers when Replicate Existing Data is false
-    When User crates new MTID on "Automation" SAP
+    Given User crates new MTID on "Automation" SAP
     When User updates mtid config in CDF_R_SLT_SETTINGS program
     Then Update mass transfer id table: "<table>" job mode to "stop_load"
     Given Open CDF replication and initiate pipeline creation

@@ -14,6 +14,6 @@
  * the License.
  */
 /**
- * contains OData step design.
+ * contains SLT step definition.
  */
 package io.cdap.plugin.slt.stepsdesign;
