@@ -1,4 +1,4 @@
-# Copyright © 2021 Cask Data, Inc.
+# Copyright © 2022 Cask Data, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may not
 # use this file except in compliance with the License. You may obtain a copy of
@@ -47,8 +47,8 @@ Feature:Run-Time SLT Scenario
       | table       | mode            |
       | ZDATA_TYPE  | replication     |
 
-    @SLT @Run-Time @Sanity
-    Scenario Outline: User configured SLT job in LTRC and executes pipeline in Initial Load Mode
+  @SLT @Run-Time @Sanity
+  Scenario Outline: User configured SLT job in LTRC and executes pipeline in Initial Load Mode
     Given User crates new MTID on "Automation" SAP
     When User updates mtid config in CDF_R_SLT_SETTINGS program
     Then Update mass transfer id table: "<table>" job mode to "stop_load"
@@ -82,7 +82,7 @@ Feature:Run-Time SLT Scenario
 
 
   @SLT @Run-Time
-    Scenario Outline: User configured SLT job in LTRC and executes pipeline in Replication
+  Scenario Outline: User configured SLT job in LTRC and executes pipeline in Replication
     Given User crates new MTID on "Automation" SAP
     When User updates mtid config in CDF_R_SLT_SETTINGS program
     Then Update mass transfer id table: "<table>" job mode to "stop_load"
@@ -120,8 +120,8 @@ Feature:Run-Time SLT Scenario
     Then User is able to validate record count in BQ matches with count in SAP
     Then Update mass transfer id table: "<table>" job mode to "stop_load"
     Examples:
-    | table   | mode            | count | cud_type| rfc             |
-    | mara    | replication     | 1     | create  | rfc_matnr       |
+      | table   | mode            | count | cud_type| rfc             |
+      | mara    | replication     | 1     | create  | rfc_matnr       |
 
   @SLT @Run-Time
   Scenario Outline: User is able to verify only replication data transfers when Replicate Existing Data is false
@@ -158,5 +158,5 @@ Feature:Run-Time SLT Scenario
 
   @SLT @Run-Time
   Scenario: User is able to delete MTID
-  Then User deletes the mtid
+    Then User deletes the mtid
 

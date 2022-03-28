@@ -1,5 +1,5 @@
 /*
- * Copyright © 2021 Cask Data, Inc.
+ * Copyright © 2022 Cask Data, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -32,15 +32,15 @@ import com.sap.conn.jco.JCoException;
 import io.cdap.e2e.utils.*;
 import io.cdap.plugin.slt.actions.SLTActions;
 import io.cdap.plugin.slt.locators.SLTLocators;
-import io.cdap.plugin.slt.utils.CDAPUtils;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import stepsdesign.BeforeActions;
 
 import java.io.FileInputStream;
@@ -54,7 +54,7 @@ import static io.cdap.e2e.utils.BigQueryClient.getSoleQueryResult;
  */
 public class StepDefinitionSLT implements CdfHelper {
 
-    private static final Logger logger = Logger.getLogger(CDAPUtils.class);
+    private static final Logger logger = LoggerFactory.getLogger(PluginPropertyUtils.class);
     private SAPProperties sapProps;
     private ErrorCapture errorCapture;
     private SAPAdapterImpl sapAdapterImpl;
@@ -79,6 +79,8 @@ public class StepDefinitionSLT implements CdfHelper {
     private static AssertionHelper assertionHelper = new AssertionHelper();
     private static ElementHelper elementHelper = new ElementHelper();
     private static WaitHelper waitHelper = new WaitHelper();
+    private static PluginPropertyUtils pluginPropertyUtils = new PluginPropertyUtils();
+
 
 
 
@@ -107,8 +109,8 @@ public class StepDefinitionSLT implements CdfHelper {
     public void open_cdf_replication() throws IOException, InterruptedException {
         openCdf();
         CDFDriver.get("http://localhost:11011/cdap/ns/default/replication/create");
-        sltActions.name_fill(UUID.randomUUID().toString().replaceAll("-", ""));
-        sltActions.next_click();
+        sltActions.enterName(UUID.randomUUID().toString().replaceAll("-", ""));
+        sltActions.clickNextButton();
         isErrorPresent = false;
         bqRecordCount = 0;
         sapRecordsCount = 0;
@@ -116,8 +118,8 @@ public class StepDefinitionSLT implements CdfHelper {
 
     @When("^Source is SAP SLT fill connection parameters$")
     public void source_is_sap_slt() throws IOException, InterruptedException {
-        sltActions.sltplugin_click();
-        sltActions.required_config(
+        sltActions.clickSltPlugin();
+        sltActions.enterMandatoryParameters(
                 "gcpProjectId",
                 "gcsDataPath",
                 mtId,
@@ -131,7 +133,7 @@ public class StepDefinitionSLT implements CdfHelper {
 
     @When("^Source is SAP SLT$")
     public void source_is_sapslt() throws IOException, InterruptedException {
-        sltActions.sltplugin_click();
+        sltActions.clickSltPlugin();
     }
 
     @Then("^User is able to set SLT parameter (.+) as (.+) and getting row (.+) for wrong input$")
@@ -139,10 +141,10 @@ public class StepDefinitionSLT implements CdfHelper {
             String inputParameter, String inputValue, String errorMessage) {
         errorExist = false;
         elementHelper.replaceElementValue(sltLocators.inputParameter(inputParameter), inputValue);
-        sltActions.next_click();
-        errorExist = CDAPUtils.getErrorProp(errorMessage).
+        sltActions.clickNextButton();
+        errorExist = pluginPropertyUtils.errorProp(errorMessage).
                 toLowerCase().contains(SLTLocators.rowError.getText().toLowerCase());
-        color = sltActions.rowError_color();
+        color = sltActions.getRowErrorBorderColor();
         Assert.assertTrue(errorExist);
         BeforeActions.scenario.write("Color of the text box" + color);
         Assert.assertTrue(color.toLowerCase().contains("rgb(209, 86, 104)"));
@@ -156,33 +158,33 @@ public class StepDefinitionSLT implements CdfHelper {
 
     @Then("^Replicate Existing Data is set to false$")
     public void replicate_existing_data() {
-        sltActions.replicateExistingDataClick();
+        sltActions.clickReplicateExistingData();
         assertionHelper.verifyElementContainsText(sltLocators.replicateExistingData,
                 "No");
     }
 
     @Then("^Suspend Slt Job is set to true$")
     public void suspend_existing_job() {
-        sltActions.suspendSltJobClick();
+        sltActions.clickSuspendSltJob();
         assertionHelper.verifyElementContainsText(sltLocators.suspendSltJob,
                 "Yes");
     }
 
     @Then("^Click on next$")
     public void click_next() {
-        sltActions.next_click();
+        sltActions.clickNextButton();
     }
 
     @Then("^Select Table \"([^\"]*)\"$")
     public void select_table_something(String table)  {
-        sltActions.select_table(table.toLowerCase());
+        sltActions.selectTable(table.toLowerCase());
     }
 
     @Then("^Enter the BigQuery Properties for slt datasource$")
     public void enter_the_bigquery_properties_for_slt_datasource_something() throws IOException {
         elementHelper.replaceElementValue(sltLocators.project,
-                CDAPUtils.getPluginProp("bqProjectId"));
-        sltActions.datasetName_fill(CDAPUtils.getPluginProp("dataset"));
+                pluginPropertyUtils.pluginProp("bqProjectId"));
+        sltActions.enterDatasetName(pluginPropertyUtils.pluginProp("dataset"));
     }
 
     @Then("^Click on Deploy Replication Pipeline$")
@@ -219,8 +221,8 @@ public class StepDefinitionSLT implements CdfHelper {
     public void get_count_of_no_of_records_transferred_from_SLT_to_bigquery_in_something(String table) throws
             IOException, InterruptedException {
         String selectQuery = "SELECT count(*)  FROM `" +
-                CDAPUtils.getPluginProp("bqProjectId") + "." +
-                CDAPUtils.getPluginProp("dataset") + "." +
+                pluginPropertyUtils.pluginProp("bqProjectId") + "." +
+                pluginPropertyUtils.pluginProp("dataset") + "." +
                 table.toLowerCase() + "`";
 
         bqRecordCount = (Integer) getSoleQueryResult(selectQuery).
@@ -230,13 +232,9 @@ public class StepDefinitionSLT implements CdfHelper {
     @Then("^Drop target BigQuery table \"([^\"]*)\"$")
     public void drop_target_bigquery_table_something(String table) {
         String selectQuery = null;
-        try {
-            selectQuery = "DROP TABLE `" + CDAPUtils.getPluginProp("bqProjectId") +
-                    "." + CDAPUtils.getPluginProp("dataset") + "." +
-                    table.toLowerCase() + "`";
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        selectQuery = "DROP TABLE `" + pluginPropertyUtils.pluginProp("bqProjectId") +
+                "." + pluginPropertyUtils.pluginProp("dataset") + "." +
+                table.toLowerCase() + "`";
         try {
             bqRecordCount = (Integer) getSoleQueryResult(selectQuery).map(Integer::parseInt).orElse(0);
         } catch (InterruptedException | IOException | BigQueryException e) {
@@ -246,15 +244,15 @@ public class StepDefinitionSLT implements CdfHelper {
 
     @Then("^Delete GCS folder for mass transfer id table \"([^\"]*)\"$")
     public void delete_gcs_folder_for_mass_transfer_id_something_table_something(String table) throws IOException {
-         Storage storage = StorageOptions.newBuilder().
-                 setProjectId(CDAPUtils.getPluginProp("gcpProjectId")).
-                 build().getService();
+        Storage storage = StorageOptions.newBuilder().
+                setProjectId(pluginPropertyUtils.pluginProp("gcpProjectId")).
+                build().getService();
         Page<Blob> blobs = storage.list(
-                CDAPUtils.getPluginProp("gcsDataPath").replaceAll("gs://", ""),
+                pluginPropertyUtils.pluginProp("gcsDataPath").replaceAll("gs://", ""),
                 Storage.BlobListOption.prefix(mtId + "/" + table));
         for (Blob blob : blobs.iterateAll()) {
             System.out.println(blob.getName());
-            storage.delete(CDAPUtils.getPluginProp("gcsDataPath").replaceAll("gs://", ""),
+            storage.delete(pluginPropertyUtils.pluginProp("gcsDataPath").replaceAll("gs://", ""),
                     blob.getName());
         }
     }
@@ -325,14 +323,14 @@ public class StepDefinitionSLT implements CdfHelper {
         opProps.put("RFC", "ZFM_TABLE_COUNT");
         opProps.put("autoCommit", "true");
         try {
-          ObjectMapper mapper = new ObjectMapper();
-          ObjectNode objectNode = mapper.createObjectNode();
-          objectNode.put("IM_TABLE", table.toUpperCase());
-          JsonNode response = sapAdapterImpl.executeRFC(objectNode.toString(), opProps, "", "");
-          sapRecordsCount = Integer.parseInt(response.get("EX_COUNT").toString().replaceAll("\"", ""));
-          BeforeActions.scenario.write("Total record count : " + sapRecordsCount);
+            ObjectMapper mapper = new ObjectMapper();
+            ObjectNode objectNode = mapper.createObjectNode();
+            objectNode.put("IM_TABLE", table.toUpperCase());
+            JsonNode response = sapAdapterImpl.executeRFC(objectNode.toString(), opProps, "", "");
+            sapRecordsCount = Integer.parseInt(response.get("EX_COUNT").toString().replaceAll("\"", ""));
+            BeforeActions.scenario.write("Total record count : " + sapRecordsCount);
         } catch (Exception e) {
-          throw SystemException.throwException(e.getMessage(), e);
+            throw SystemException.throwException(e.getMessage(), e);
         }
     }
 
@@ -391,9 +389,9 @@ public class StepDefinitionSLT implements CdfHelper {
             objectNode.put("IM_MASS_TR_ID", mtId);
             objectNode.put("IM_EXTRA_FLDS", "X");
             objectNode.put("IM_GCP_KEY_NAME" ,
-                    CDAPUtils.getPluginProp("IM_GCP_KEY_NAME"));
+                    pluginPropertyUtils.pluginProp("IM_GCP_KEY_NAME"));
             objectNode.put("IM_GCS_BUCKET" ,
-                    CDAPUtils.getPluginProp("gcsDataPath").
+                    pluginPropertyUtils.pluginProp("gcsDataPath").
                             replaceAll("gs://" , ""));
             objectNode.put("IM_IS_SET_ACT" , "X");
             JsonNode response = sapAdapterImpl.executeRFC(objectNode.toString(), opProps, "", "");
@@ -444,29 +442,29 @@ public class StepDefinitionSLT implements CdfHelper {
         errorCapture = new ErrorCapture(exceptionUtils);
         sapAdapterImpl = new SAPAdapterImpl(errorCapture, connection);
 
-    Map opProps = new HashMap<>();
-    opProps.put("RFC", CDAPUtils.getPluginProp(rfcName));
-    opProps.put("autoCommit", "true");
-    try {
+        Map opProps = new HashMap<>();
+        opProps.put("RFC", pluginPropertyUtils.pluginProp(rfcName));
+        opProps.put("autoCommit", "true");
+        try {
 
-      ObjectMapper mapper = new ObjectMapper();
-      ObjectNode objectNode = mapper.createObjectNode();
-      objectNode.put(action, recordcount);
-      JsonNode response = sapAdapterImpl.executeRFC(objectNode.toString(), opProps, "", "");
-      System.out.println(response.asText());
-      int noOfRecords = Integer.parseInt(response.get("EX_COUNT").asText());
-      Iterator<JsonNode> iteratedData = response.get("EX_DATA").iterator();
-      while (iteratedData.hasNext()) {
-        JsonNode object = iteratedData.next();
-        Iterator<String> fieldName = object.fieldNames();
-        if (fieldName.hasNext()) {
-          fields.add(object.get(fieldName.next()).asText());
+            ObjectMapper mapper = new ObjectMapper();
+            ObjectNode objectNode = mapper.createObjectNode();
+            objectNode.put(action, recordcount);
+            JsonNode response = sapAdapterImpl.executeRFC(objectNode.toString(), opProps, "", "");
+            System.out.println(response.asText());
+            int noOfRecords = Integer.parseInt(response.get("EX_COUNT").asText());
+            Iterator<JsonNode> iteratedData = response.get("EX_DATA").iterator();
+            while (iteratedData.hasNext()) {
+                JsonNode object = iteratedData.next();
+                Iterator<String> fieldName = object.fieldNames();
+                if (fieldName.hasNext()) {
+                    fields.add(object.get(fieldName.next()).asText());
+                }
+            }
+            BeforeActions.scenario.write("No of records :-" + noOfRecords + Arrays.toString(fields.toArray()));
+        } catch (Exception e) {
+            throw SystemException.throwException(e.getMessage(), e);
         }
-      }
-      BeforeActions.scenario.write("No of records :-" + noOfRecords + Arrays.toString(fields.toArray()));
-    } catch (Exception e) {
-      throw SystemException.throwException(e.getMessage(), e);
-    }
-    Thread.sleep(6000); //sleep required to wait for SAP record creation
+        Thread.sleep(6000); //sleep required to wait for SAP record creation
     }
 }

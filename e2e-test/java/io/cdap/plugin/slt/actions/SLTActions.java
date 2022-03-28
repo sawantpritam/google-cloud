@@ -1,5 +1,5 @@
 /*
- * Copyright © 2021 Cask Data, Inc.
+ * Copyright © 2022 Cask Data, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -16,96 +16,89 @@
 package io.cdap.plugin.slt.actions;
 
 import io.cdap.e2e.utils.ElementHelper;
+import io.cdap.e2e.utils.PluginPropertyUtils;
 import io.cdap.e2e.utils.SeleniumDriver;
-import io.cdap.e2e.utils.SeleniumHelper;
 import io.cdap.plugin.slt.locators.SLTLocators;
-import io.cdap.plugin.slt.utils.CDAPUtils;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-import java.io.IOException;
 
 /**
  * SLT Actions.
  */
 public class SLTActions {
-    public static SLTLocators sltLocators = new SLTLocators();
-    private static WebDriver CDFDriver;
-    private static ElementHelper elementHelper = new ElementHelper();
+    private static WebDriver cdfDriver;
+    private static PluginPropertyUtils pluginPropertyUtils = new PluginPropertyUtils();
 
     static {
-        CDFDriver = SeleniumDriver.getDriver();
-        sltLocators = SeleniumHelper.getPropertiesLocators(SLTLocators.class);
-
+        cdfDriver = SeleniumDriver.getDriver();
     }
-    public static void name_fill(String name) {
-        sltLocators.name.sendKeys(name);
+    public static void enterName(String name) {
+        ElementHelper.sendKeys(SLTLocators.name, name);
     }
-    public void required_config(String gcpProjectId,
-                                String gcsDataPath,
-                                String massTransferId,
-                                String sapJcoLibGcsPath,
-                                String jcoclienthost,
-                                String jcoclient,
-                                String jcoclientsysnr,
-                                String jcoclientuser,
-                                String jcoclientpasswd) throws IOException {
-        elementHelper.replaceElementValue(sltLocators.gcpProjectId,
-                CDAPUtils.getPluginProp(gcpProjectId));
-        elementHelper.sendKeys(sltLocators.gcsDataPath, CDAPUtils.getPluginProp(gcsDataPath));
-        elementHelper.sendKeys(sltLocators.massTransferId, massTransferId);
-        elementHelper.sendKeys(sltLocators.sapJcoLibGcsPath, CDAPUtils.getPluginProp(sapJcoLibGcsPath));
-        elementHelper.sendKeys(sltLocators.jcoclienthost, CDAPUtils.getPluginProp(jcoclienthost));
-        elementHelper.sendKeys(sltLocators.jcoclient, CDAPUtils.getPluginProp(jcoclient));
-        elementHelper.sendKeys(sltLocators.jcoclientsysnr,CDAPUtils.getPluginProp(jcoclientsysnr));
-        elementHelper.sendKeys(sltLocators.jcoclientuser, CDAPUtils.getPluginProp(jcoclientuser));
-        elementHelper.sendKeys(sltLocators.jcoclientpasswd, CDAPUtils.getPluginProp(jcoclientpasswd));
+    public void enterMandatoryParameters(String gcpProjectId,
+                                         String gcsDataPath,
+                                         String massTransferId,
+                                         String sapJcoLibGcsPath,
+                                         String jcoclienthost,
+                                         String jcoclient,
+                                         String jcoclientsysnr,
+                                         String jcoclientuser,
+                                         String jcoclientpasswd) {
+        ElementHelper.replaceElementValue(SLTLocators.gcpProjectId,
+                pluginPropertyUtils.pluginProp(gcpProjectId));
+        ElementHelper.sendKeys(SLTLocators.gcsDataPath, pluginPropertyUtils.pluginProp(gcsDataPath));
+        ElementHelper.sendKeys(SLTLocators.massTransferId, massTransferId);
+        ElementHelper.sendKeys(SLTLocators.sapJcoLibGcsPath, pluginPropertyUtils.pluginProp(sapJcoLibGcsPath));
+        ElementHelper.sendKeys(SLTLocators.jcoClientHost, pluginPropertyUtils.pluginProp(jcoclienthost));
+        ElementHelper.sendKeys(SLTLocators.jcoClient, pluginPropertyUtils.pluginProp(jcoclient));
+        ElementHelper.sendKeys(SLTLocators.jcoClientSysnr,pluginPropertyUtils.pluginProp(jcoclientsysnr));
+        ElementHelper.sendKeys(SLTLocators.jcoClientUser, pluginPropertyUtils.pluginProp(jcoclientuser));
+        ElementHelper.sendKeys(SLTLocators.jcoClientPasswd, pluginPropertyUtils.pluginProp(jcoclientpasswd));
     }
-    public void sltplugin_click() {
-        elementHelper.clickOnElement(sltLocators.sltplugin);
+    public void clickSltPlugin() {
+        ElementHelper.clickOnElement(SLTLocators.sltplugin);
     }
 
-    public String rowError_color() {
-        return elementHelper.getElementCssProperty(SLTLocators.rowError, "border-color");
+    public String getRowErrorBorderColor() {
+        return ElementHelper.getElementCssProperty(SLTLocators.rowError, "border-color");
     }
 
-    public void next_click() {
-        elementHelper.clickOnElement(sltLocators.next);
+    public void clickNextButton() {
+        ElementHelper.clickOnElement(SLTLocators.next);
     }
 
-    public void select_table(String tableName) {
-        elementHelper.clickOnElement(sltLocators.table(tableName));
+    public void selectTable(String tableName) {
+        ElementHelper.clickOnElement(SLTLocators.table(tableName));
     }
 
-    public void datasetName_fill (String stagingBucket) {
-        elementHelper.sendKeys(sltLocators.datasetName, stagingBucket);
+    public void enterDatasetName (String stagingBucket) {
+        ElementHelper.sendKeys(SLTLocators.datasetName, stagingBucket);
     }
 
     public void deployPipelineClick() {
-        elementHelper.clickOnElement(sltLocators.deployPipeline);
+        ElementHelper.clickOnElement(SLTLocators.deployPipeline);
     }
 
     public void startPipeline() {
-        elementHelper.clickIfDisplayed(sltLocators.start, 60l);
+        ElementHelper.clickIfDisplayed(SLTLocators.start, 60l);
     }
 
     public void stopPipeline() {
-        elementHelper.clickOnElement(sltLocators.stop);
+        ElementHelper.clickOnElement(SLTLocators.stop);
     }
 
-    public void replicateExistingDataClick() {
-        elementHelper.clickOnElement(sltLocators.replicateExistingData);
+    public void clickReplicateExistingData() {
+        ElementHelper.clickOnElement(SLTLocators.replicateExistingData);
     }
 
-    public String replicateExistingDataGetText() {
-        return elementHelper.getElementText(sltLocators.replicateExistingData);
+    public String getReplicateExistingDataText() {
+        return ElementHelper.getElementText(SLTLocators.replicateExistingData);
     }
 
-    public void suspendSltJobClick() {
-        elementHelper.clickOnElement(sltLocators.suspendSltJob);
+    public void clickSuspendSltJob() {
+        ElementHelper.clickOnElement(SLTLocators.suspendSltJob);
     }
 
-    public String suspendSltJobGetText() {
-        return elementHelper.getElementText(sltLocators.suspendSltJob);
+    public String getSuspendSltJobText() {
+        return ElementHelper.getElementText(SLTLocators.suspendSltJob);
     }
 }
