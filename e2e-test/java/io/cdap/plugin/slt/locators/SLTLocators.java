@@ -18,19 +18,14 @@ package io.cdap.plugin.slt.locators;
 
 import io.cdap.e2e.utils.SeleniumDriver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+
 /**
- * SLT Locators.
+ * SLT Plugin Locators.
  */
 public class SLTLocators {
-    private static WebDriver cdfDriver;
-
-    static {
-        cdfDriver = SeleniumDriver.getDriver();
-    }
 
     @FindBy(how = How.XPATH, using = "//input[@data-cy='name']")
     public static WebElement name;
@@ -129,13 +124,13 @@ public class SLTLocators {
 
     public static By replicationStatus = By.xpath("//*[contains(text(),'replication status: Process: ')]");
 
-    public static WebElement table (String tableName) {
-        return cdfDriver.findElement(By.xpath("//div[contains(text(),'" +
-                tableName + "')]/preceding-sibling::div//input"));
+    public static WebElement table(String tableName) {
+        return SeleniumDriver.getDriver().findElement(By.xpath("//div[contains(text(),'" +
+                                                                 tableName + "')]/preceding-sibling::div//input"));
     }
 
-    public static WebElement inputParameter (String inputParameter) {
-        return cdfDriver.findElement(By.xpath("//*[@data-cy='" +
-                inputParameter + "' and contains(@class,'MuiInputBase-input')]"));
+    public static WebElement inputParameter(String inputParameter) {
+        return SeleniumDriver.getDriver().findElement(By.xpath("//*[@data-cy='" +
+                                                                 inputParameter + "' and contains(@class,'MuiInputBase-input')]"));
     }
 }

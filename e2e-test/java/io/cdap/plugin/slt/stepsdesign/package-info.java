@@ -14,6 +14,6 @@
  * the License.
  */
 /**
- * contains SLT step definition.
+ * Contains SLT test scenarios step definitions.
  */
 package io.cdap.plugin.slt.stepsdesign;

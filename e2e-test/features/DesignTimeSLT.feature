@@ -14,10 +14,10 @@
 Feature: Design Time SLT Scenario
 
   @SLT @Design-Time @Sanity
-  Scenario Outline: User is able to provides input to SLT parameters
+  Scenario Outline: Validate mandatory SLT parameters is present and editable
     Given Open CDF replication and initiate pipeline creation
-    When Source is SAP SLT
-    Then User is able to set SLT parameter "<option>" as "<input>"
+    When Select SAP SLT as source
+    Then Validate SLT parameter "<option>" can be set as "<input>"
     Examples:
       | option            | input         |
       | gcsDataPath       | invalid       |
@@ -32,33 +32,33 @@ Feature: Design Time SLT Scenario
       | jco.client.passwd | invalid       |
 
   @SLT @Design-Time @Sanity
-  Scenario: User is able to set Replicate Existing Data as false
+  Scenario: Validate Replicate Existing Data can be set as false
     Given Open CDF replication and initiate pipeline creation
-    When Source is SAP SLT
-    Then Replicate Existing Data is set to false
+    When Select SAP SLT as source
+    Then Validate Replicate Existing Data can be set to false
 
   @SLT @Design-Time @Sanity
-  Scenario: User is able to set suspend Slt Job as true
+  Scenario: Validate suspend Slt Job can be set as true
     Given Open CDF replication and initiate pipeline creation
-    When Source is SAP SLT
-    Then Suspend Slt Job is set to true
+    When Select SAP SLT as source
+    Then Validate Suspend Slt Job can be set to true
 
   @SLT @Design-Time @Sanity
-  Scenario Outline: User is able to configured job for "<table>"
-    Given User crates new MTID on "Automation" SAP
-    When User updates mtid config in CDF_R_SLT_SETTINGS program
-    Then Update mass transfer id table: "<table>" job mode to "replication"
+  Scenario Outline: Validate CDF replication job can be configured job for "<table>"
+    Given Create new MTID on "Automation" SAP
+    When Validate that MTID can be Updated using CDF_R_SLT_SETTINGS program
+    Then Verify that user is able to update table "<table>" to "replication" on LTRC
     Given Open CDF replication and initiate pipeline creation
-    When Source is SAP SLT fill connection parameters
+    When Select SAP SLT as source and fill connection parameters
     Then Click on next
-    Then Select Table "<table>"
+    Then Validate Table is available and  can be selected "<table>"
     Then Click on next
     Then Enter the BigQuery Properties for slt datasource
     Then Click on next
     Then Click on next
     Then Click on next
-    Then Click on Deploy Replication Pipeline
-    Then Update mass transfer id table: "<table>" job mode to "stop_load"
+    Then Validate Replication Pipeline can be deployed
+    Then Verify that user is able to update table "<table>" to "stop_load" on LTRC
     Examples:
       | table |
       | vbap |

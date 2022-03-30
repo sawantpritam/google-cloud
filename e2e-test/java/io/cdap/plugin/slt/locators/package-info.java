@@ -15,6 +15,6 @@
  */
 
 /**
- * contains SLT locators.
+ * contains CDF Replicator plugin locators.
  */
 package io.cdap.plugin.slt.locators;

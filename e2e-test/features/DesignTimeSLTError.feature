@@ -14,23 +14,21 @@
 Feature: Design Time SLT Negative Scenario
 
   @SLT @Design-Time @Sanity @Negative
-  Scenario Outline: User provides wrong parameters and able to verify error messages
+  Scenario Outline: Validate for wrong parameters plugin throws proper error messages
     Given Open CDF replication and initiate pipeline creation
-    When User crates new MTID on "Automation" SAP
-    When User updates mtid config in CDF_R_SLT_SETTINGS program
-    When Source is SAP SLT fill connection parameters
-    Then User is able to set SLT parameter <option> as <input> and getting row <errorMessage> for wrong input
+    When Create new MTID on "Automation" SAP
+    When Validate that MTID can be Updated using CDF_R_SLT_SETTINGS program
+    When Select SAP SLT as source and fill connection parameters
+    Then Verify that after setting SLT parameter <option> as <input> plugin is throws error <errorMessage>
     Examples:
-      | option            | input         | errorMessage          |
-      | gcsDataPath       | invalid       | invalidgcsDataPath    |
-      | guid              | invalidguid   | invalidMTorGUID       |
-      | massTransferId    | ZZZ66         | invalidMTorGUID       |
-      | sapJcoLibGcsPath  |gs://ga_slt_cdf|invalidsapJcoLibGcsPath|
-      | jco.client.ashost | invalid       | invalidIP             |
-      | jco.client.sysnr  | abc           | invalidSysNr          |
-      | jco.client.client | abc           | invalidClient         |
-      | jco.client.lang   | invalid       | invalidLang           |
-      | jco.client.user   | invalid       | invalidCred           |
-      | jco.client.passwd | invalid       | invalidCred           |
-
-
+      | option            | input           | errorMessage            |
+      | gcsDataPath       | invalid         | invalidgcsDataPath      |
+      | guid              | invalidguid     | invalidMTorGUID         |
+      | massTransferId    | ZZZ66           | invalidMTorGUID         |
+      | sapJcoLibGcsPath  | gs://ga_slt_cdf | invalidsapJcoLibGcsPath |
+      | jco.client.ashost | invalid         | invalidIP               |
+      | jco.client.sysnr  | abc             | invalidSysNr            |
+      | jco.client.client | abc             | invalidClient           |
+      | jco.client.lang   | invalid         | invalidLang             |
+      | jco.client.user   | invalid         | invalidCred             |
+      | jco.client.passwd | invalid         | invalidCred             |

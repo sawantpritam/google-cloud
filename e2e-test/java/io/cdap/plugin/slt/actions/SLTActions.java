@@ -17,23 +17,19 @@ package io.cdap.plugin.slt.actions;
 
 import io.cdap.e2e.utils.ElementHelper;
 import io.cdap.e2e.utils.PluginPropertyUtils;
-import io.cdap.e2e.utils.SeleniumDriver;
 import io.cdap.plugin.slt.locators.SLTLocators;
-import org.openqa.selenium.WebDriver;
 
 /**
  * SLT Actions.
  */
 public class SLTActions {
-    private static WebDriver cdfDriver;
+
     private static PluginPropertyUtils pluginPropertyUtils = new PluginPropertyUtils();
 
-    static {
-        cdfDriver = SeleniumDriver.getDriver();
-    }
     public static void enterName(String name) {
         ElementHelper.sendKeys(SLTLocators.name, name);
     }
+
     public void enterMandatoryParameters(String gcpProjectId,
                                          String gcsDataPath,
                                          String massTransferId,
@@ -44,16 +40,17 @@ public class SLTActions {
                                          String jcoclientuser,
                                          String jcoclientpasswd) {
         ElementHelper.replaceElementValue(SLTLocators.gcpProjectId,
-                pluginPropertyUtils.pluginProp(gcpProjectId));
+                                          pluginPropertyUtils.pluginProp(gcpProjectId));
         ElementHelper.sendKeys(SLTLocators.gcsDataPath, pluginPropertyUtils.pluginProp(gcsDataPath));
         ElementHelper.sendKeys(SLTLocators.massTransferId, massTransferId);
         ElementHelper.sendKeys(SLTLocators.sapJcoLibGcsPath, pluginPropertyUtils.pluginProp(sapJcoLibGcsPath));
         ElementHelper.sendKeys(SLTLocators.jcoClientHost, pluginPropertyUtils.pluginProp(jcoclienthost));
         ElementHelper.sendKeys(SLTLocators.jcoClient, pluginPropertyUtils.pluginProp(jcoclient));
-        ElementHelper.sendKeys(SLTLocators.jcoClientSysnr,pluginPropertyUtils.pluginProp(jcoclientsysnr));
+        ElementHelper.sendKeys(SLTLocators.jcoClientSysnr, pluginPropertyUtils.pluginProp(jcoclientsysnr));
         ElementHelper.sendKeys(SLTLocators.jcoClientUser, pluginPropertyUtils.pluginProp(jcoclientuser));
         ElementHelper.sendKeys(SLTLocators.jcoClientPasswd, pluginPropertyUtils.pluginProp(jcoclientpasswd));
     }
+
     public void clickSltPlugin() {
         ElementHelper.clickOnElement(SLTLocators.sltplugin);
     }
@@ -70,7 +67,7 @@ public class SLTActions {
         ElementHelper.clickOnElement(SLTLocators.table(tableName));
     }
 
-    public void enterDatasetName (String stagingBucket) {
+    public void enterDatasetName(String stagingBucket) {
         ElementHelper.sendKeys(SLTLocators.datasetName, stagingBucket);
     }
 

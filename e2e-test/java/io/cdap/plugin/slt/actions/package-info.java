@@ -15,6 +15,6 @@
  */
 
 /**
- * contains SLT Actions.
+ * contains Actions methods.
  */
 package io.cdap.plugin.slt.actions;
